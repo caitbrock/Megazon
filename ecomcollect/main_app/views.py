@@ -20,6 +20,10 @@ def about(request):
     return render(request, 'about.html')
 
 
+def dashboard(request):
+    return render(request, "users/dashboard.html")
+
+
 class ProductCreate(CreateView):
   model = Product
   fields = ['name','description','price']
@@ -43,5 +47,4 @@ class ProductUpdate(UpdateView):
 class ProductDelete(DeleteView):
     model = Product
     success_url = '/'
-def dashboard(request):
-    return render(request, "users/dashboard.html")
+

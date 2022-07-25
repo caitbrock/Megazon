@@ -17,10 +17,7 @@ class User(models.Model):
     def __str__(self):
         return self.name
 
-<<<<<<< HEAD
-    def get_absolute_url(self):
-        return reverse('detail', kwargs={'product_id': self.id})
-=======
+
 class Product(models.Model):
     name = models.CharField(max_length=100)
     category_type = models.CharField(max_length=1, choices=CATEGORY_TYPE, default=CATEGORY_TYPE[0][0])
@@ -29,7 +26,7 @@ class Product(models.Model):
     img = models.ImageField()
     seller_id = models.ForeignKey(User, on_delete=models.CASCADE)
     quant_sell = models.IntegerField()
-   
+    
     def __str__(self):
         return self.name
 
@@ -42,4 +39,6 @@ class Order(models.Model):
     def __str__(self):
         return self.name
 
->>>>>>> fbf89497f857b6aa90f6e801a02e3770b5d40369
+
+    def get_absolute_url(self):
+        return reverse('detail', kwargs={'product_id': self.id})

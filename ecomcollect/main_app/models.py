@@ -1,5 +1,6 @@
 from unicodedata import category
 from django.db import models
+from django.urls import reverse
 
 CATEGORY_TYPE = (
         ('D', 'Digital Art'),
@@ -16,6 +17,7 @@ class User(models.Model):
     def __str__(self):
         return self.name
 
+
 class Product(models.Model):
     name = models.CharField(max_length=100)
     category_type = models.CharField(max_length=1, choices=CATEGORY_TYPE, default=CATEGORY_TYPE[0][0])
@@ -24,7 +26,7 @@ class Product(models.Model):
     img = models.ImageField()
     seller_id = models.ForeignKey(User, on_delete=models.CASCADE)
     quant_sell = models.IntegerField()
-   
+    
     def __str__(self):
         return self.name
 
@@ -36,4 +38,8 @@ class Order(models.Model):
 
     def __str__(self):
         return self.name
+
+
+    def get_absolute_url(self):
+        return reverse('detail', kwargs={'product_id': self.id})
 

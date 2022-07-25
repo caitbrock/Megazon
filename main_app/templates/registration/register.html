@@ -1,0 +1,15 @@
+{% extends 'base.html' %} {% block content %}
+<h2>Register</h2>
+
+<!-- login Form -->
+<form method="post">
+  <!-- every djnogo form need  csrf_token -->
+  {% csrf_token %}
+  <!--Django use dictinories to pass data to template to  rendering it-->
+  {{ form.as_p }}
+  <input type="submit" value="Register" />
+</form>
+
+<a href="{% url 'login' %}">back to dashboard</a>
+
+{% endblock %}

@@ -79,11 +79,6 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'ecomcollect',
-<<<<<<< HEAD
-        'USER':'postgres',
-=======
-        'USER': 'postgres'
->>>>>>> fbf89497f857b6aa90f6e801a02e3770b5d40369
     }
 }
 

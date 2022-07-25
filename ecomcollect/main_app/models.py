@@ -1,6 +1,7 @@
 from unicodedata import category
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth.models import User
 
 CATEGORY_TYPE = (
         ('D', 'Digital Art'),
@@ -8,25 +9,25 @@ CATEGORY_TYPE = (
         ('M', 'Music'),
         ('S', 'Service')
     )
-class User(models.Model):
+
+class Profile(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     email = models.CharField(max_length=100)
     description = models.CharField(max_length=250)
-
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     def __str__(self):
         return self.name
 
 
 class Product(models.Model):
     name = models.CharField(max_length=100)
-    category_type = models.CharField(max_length=1, choices=CATEGORY_TYPE, default=CATEGORY_TYPE[0][0])
     description = models.CharField(max_length=250)
     price = models.IntegerField()
+    category_type = models.CharField(max_length=1, choices=CATEGORY_TYPE, default=CATEGORY_TYPE[0][0])
     img = models.ImageField()
-    seller_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     quant_sell = models.IntegerField()
-    
     def __str__(self):
         return self.name
 

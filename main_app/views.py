@@ -38,7 +38,7 @@ def profile(request):
 
 class ProductCreate(CreateView):
     model = Product
-    fields = ['name', 'description', 'price','img','quant_sell']
+    fields = ['name', 'description', 'price', 'img', 'quant_sell']
 
 class ProductUpdate(UpdateView):
     model = Product

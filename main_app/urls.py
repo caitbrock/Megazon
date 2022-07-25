@@ -18,7 +18,7 @@ urlpatterns = [
   path('products/create/', views.ProductCreate.as_view(), name='products_create'),
   path('products/<int:pk>/update', views.ProductUpdate.as_view(), name='products_update'),
   path('products/<int:pk>/delete/', views.ProductDelete.as_view(), name='products_delete'),
-
+  path('profile/create/', views.ProfileCreate.as_view(), name='profile_create'),
 ]
 
 if settings.DEBUG:  

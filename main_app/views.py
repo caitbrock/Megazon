@@ -1,5 +1,5 @@
 from django.shortcuts import redirect, render
-from .models import Product
+from .models import Product,Profile
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth import login
 from django.urls import reverse
@@ -22,8 +22,10 @@ def about(request):
     return render(request, 'about.html')
 
 
+
 def dashboard(request):
-    return render(request, "users/dashboard.html")
+    user = Profile.objects.get(user=request.user)
+    return render(request, "users/dashboard.html",{'user':user})
 
 def register(request):
  if request.method == "GET":
@@ -42,8 +44,9 @@ def cart(request):
     return render(request, 'cart.html')
 
 def profile(request):
+    user = Profile.objects.get(user=request.user)
     products = Product.objects.all()
-    return render(request, 'profile.html',{'products': products})
+    return render(request, 'profile.html',{'products': products,'user':user})
 
 class ProductCreate(CreateView):
     model = Product
@@ -58,3 +61,12 @@ class ProductDelete(DeleteView):
     model = Product
     success_url = '/'
 
+class ProfileCreate(CreateView):
+    model = Profile
+    fields = '__all__'
+    def form_valid(self, form):
+    # Assign the logged in user (self.request.user)
+        form.instance.user = self.request.user  # form.instance is the cat
+    # Let the CreateView do its job as usual
+        return super().form_valid(form)
+    success_url = '/profile/'

@@ -1,11 +1,12 @@
 {% extends 'base.html' %} {% block content %}
 
 <h1>Profile</h1>
-<p>display user profile pic</p>
-<p>display name here</p>
-<p>display description here</p>
+<p>{{ user.first_name }}</p>
+<p><img style="width: 100px" src="/{{ user.img }}" /></p>
+<p>{{ user.description }}</p>
 <p>Followers 500</p>
 <p>following 2</p>
+<a href="{% url 'profile_create' %}"><button>Edit Profile</button></a>
 <h1>My Products</h1>
 {% for product in products %}
 <div class="card">

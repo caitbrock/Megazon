@@ -18,7 +18,7 @@ class Profile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     img = models.ImageField(upload_to='userProfileImages')
     def __str__(self):
-        return self.name
+        return self.first_name
 
 
 class Product(models.Model):

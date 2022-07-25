@@ -1,83 +1,58 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %}
+{% block content %}
 
 <h1>Explore</h1>
 
-<div class="nav-content hide-on-large-only">
-  <ul class="tabs tabs-transparent">
-    <li class="tab"><a href="#!" class="filter" data-filter="all">All</a></li>
-    <li class="tab"><a href="#!" class="filter" data-filter=".category-graphics">Graphics</a></li>
-    <li class="tab"><a href="#!" class="filter" data-filter=".category-code">Code</a></li>
-    <li class="tab"><a href="#!" class="filter" data-filter=".category-versions">Version control</a></li>
-    <li class="tab"><a href="#!" class="filter" data-filter=".category-publishing">Publishing</a></li>
-    <li class="tab"><a href="#!" class="filter" data-filter=".category-prototyping">Prototyping</a></li>
-    <li class="tab"><a href="#!" class="filter" data-filter=".category-servers">Servers</a></li>
-  </ul>
+<div class="input-field col s12 m6">
+  <div class="select-wrapper">
+    <i class="material-icons prefix">filter_list</i>
+    <select id="FilterSelect">
+      <option class="filter" selected disabled>Filter Category</option>
+      <option class="filter" value="all" data-filter="all" selected>All</option>
+      <option class="filter" value=".category-graphics">Digital Art</option>
+      <option class="filter" value=".category-code">Course</option>
+      <option class="filter" value=".category-versions">Music</option>
+      <option class="filter" value=".category-publishing">Service</option>
+    </select>
+  </div>
 </div>
-</nav>
+
+<div class="filter-cost">
+  <span class="right">
+    <label>Sort:</label>
+    <button class="sort btn btn-floating waves-effect btn-flat grey-text text-darken-1" data-sort="price:asc"><i class="small material-icons">arrow_upward</i></button>
+    <button class="sort btn btn-floating waves-effect btn-flat grey-text text-darken-1" data-sort="price:desc"><i class="small material-icons">arrow_downward</i></button></button>
+
+  </span>
 </div>
 
+<div class="row">
+  <div class="col s12 m4 l4">
+    <p>Image</p>
+  </div>
+  <div class="col s12 m4 l4">
+    <p>Image</p>
+  </div>
+  <div class="col s12 m4 l4">
+    <p>Image</p>
+  </div>
+</div>
 
-
-
-
-<!-- 	SORTING BUTTON'S ROW	 -->
-<div id="sorting-row" class="row">
-  <div class="controls">
-
-    <div class="col s12">
-      <div class="input-field col s2 m6 hide-on-large-only">
-        <a class="modal-trigger btn btn-floating waves-effect btn-flat grey-text text-darken-1" href="#modal1">
-          <i class="material-icons">info</i>
-        </a>
-      </div>
-
-
-      <!-- MATERIALIZE'S DROPDOWN SELECT FOR DESKTOP USERS -->
-      <div class="input-field col s12 m6 hide-on-med-and-down">
-        <div class="select-wrapper">
-          <i class="material-icons prefix">filter_list</i>
-          <select id="FilterSelect">
-            <option class="filter" selected disabled>Filter Category</option>
-            <option class="filter" value="all" data-filter="all" selected>All</option>
-            <option class="filter" value=".category-graphics">Graphics</option>
-            <option class="filter" value=".category-code">Code</option>
-            <option class="filter" value=".category-versions">Version control</option>
-            <option class="filter" value=".category-publishing">Publishing</option>
-            <option class="filter" value=".category-prototyping">Prototyping</option>
-            <option class="filter" value=".category-servers">Servers</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="input-field col s10 m6">
-        <span class="right">
-          <label>Sort:</label>
-          <button class="sort btn btn-floating waves-effect btn-flat grey-text text-darken-1" data-sort="name:asc">A-Z</button>
-          <button class="sort btn btn-floating waves-effect btn-flat grey-text text-darken-1" data-sort="name:desc">Z-A</button>
-          <button class="sort btn btn-floating waves-effect btn-flat grey-text text-darken-1" data-sort="myorder:asc"><i class="material-icons">arrow_upward</i></button>
-          <button class="sort btn btn-floating waves-effect btn-flat grey-text text-darken-1" data-sort="myorder:desc"><i class="material-icons">arrow_downward</i></button>
-        </span>
-      </div>
-
-
+{% for product in products %}
+<div class="card">
+  <a href="{% url 'detail' product.id %}">
+    <div class="card-content">
+      <span class="card-title">
+        {{ product.name }}</span>
+      <img src="/static/images/{{product.img}}">
+      <p>description:
+        {{ product.description }}
+      </p>
+      <p>price:
+        {{ product.price }}
+      </p>
     </div>
-  </div>
-
-
-  {% for product in products %}
-  <div class="card">
-    <a href="{% url 'detail' product.id %}">
-      <div class="card-content">
-        <span class="card-title">
-          {{ product.name }}</span>
-        <img src="/static/images/{{product.img}}">
-        <p>description:
-          {{ product.description }}
-        </p>
-        <p>price:
-          {{ product.price }}
-        </p>
-      </div>
-    </a>
-  </div>
-  {% endfor %}{% endblock %}
+  </a>
+</div>
+{% endfor %}
+{% endblock %}

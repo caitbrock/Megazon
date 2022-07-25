@@ -1,0 +1,15 @@
+{% extends 'base.html' %} {% block content %}
+
+<h1>Explore</h1>
+
+{% for product in products %}
+<div class="card">
+  <a href="{% url 'detail' product.id %}">
+    <div class="card-content">
+      <span class="card-title">{{ product.name }}</span>
+      <p>description: {{ product.description }}</p>
+      <p>price: {{ product.price }}</p>
+    </div>
+  </a>
+</div>
+{% endfor %}{% endblock %}

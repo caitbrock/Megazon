@@ -1,9 +1,11 @@
 # Project-Three
 
-test
+The work I have done:
 
-test - from Roccay 4:55pm
+1.Created database ecomcollect.(have not created ant tables or etc)
+2.Created login page(but user is not able to get in yet :)))))   ). But while user is not able to login it directs to automaticaly to dashboard page
+3.Created admin user , password, email: Please find them below:
 
-test - from Lud 4:58pm
-
-testing for branch
+  username:  testuser
+  email: test@test.com
+  password: testadmin

@@ -1,5 +1,6 @@
-from django.urls import path
-from . import views
+from django.urls import path, include
+from . import views  
+
 
 urlpatterns = [
   path('', views.home, name='home'),
@@ -10,4 +11,6 @@ urlpatterns = [
   path('products/create/', views.ProductCreate.as_view(), name='products_create'),
   path('products/<int:pk>/update', views.ProductUpdate.as_view(), name='products_update'),
   path('products/<int:pk>/delete/', views.ProductDelete.as_view(), name='products_delete'),
+  path('dashboard/', views.dashboard, name="dashboard"),
+  path('accounts/', include("django.contrib.auth.urls"))
 ]

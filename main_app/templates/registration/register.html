@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-<h2>Login</h2>
+<h2>Register</h2>
 
 <!-- login Form -->
 <form method="post">
@@ -8,10 +8,9 @@
 {% csrf_token %}
 <!--Django use dictinories to pass data to template to  rendering it-->
 {{ form.as_p }}
-<input type="submit" value="Login">
+<input type="submit" value="Register">
 </form>
 
-<a href="{% url 'dashboard' %}">back to dashboard</a>
-<a href="{% url 'password_reset' %}">Reset Password</a>
-<a href="{% url 'register'  %}">Register</a>
+<a href="{% url 'login' %}">back to dashboard</a>
+
 {% endblock %}

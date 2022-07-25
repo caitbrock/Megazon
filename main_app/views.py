@@ -1,7 +1,9 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import redirect, render
 from .models import Product
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.contrib.auth import login
+from django.urls import reverse
+from .form import CustomUserCreationForm
 # Create your views here.
 
 # (when without filter) The home page will randomly grab products from the database
@@ -23,6 +25,18 @@ def about(request):
 def dashboard(request):
     return render(request, "users/dashboard.html")
 
+def register(request):
+ if request.method == "GET":
+   return render(
+    request, "registration/register.html",
+    {'form': CustomUserCreationForm }
+   )
+ elif request.method == 'POST':
+  form = CustomUserCreationForm(request.POST)
+  if form.is_valid():
+   user = form.save()
+   login(request, user)
+   return redirect(reverse("dashboard"))
 
 class ProductCreate(CreateView):
   model = Product

@@ -24,21 +24,17 @@ def dashboard(request):
     return render(request, "users/dashboard.html")
 
 
-class ProductCreate(CreateView):
-  model = Product
-  fields = ['name','description','price']
-  success_url = '/'
-
-
 def cart(request):
     return render(request, 'cart.html')
 
 def profile(request):
-    return render(request, 'profile.html')
+    products = Product.objects.all()
+    return render(request, 'profile.html',{'products': products})
 
 class ProductCreate(CreateView):
     model = Product
     fields = ['name', 'description', 'price','img','quant_sell']
+    success_url = '/'
 
 class ProductUpdate(UpdateView):
     model = Product

@@ -8,7 +8,15 @@ body {
 main {
   flex: 1 0 auto;
 }
-    
+
+h1 {
+  font-size: 150px;
+}
+
+h6 {
+  font-size: 30px;
+}
+
 footer.page-footer {
   padding-top: 0;
   text-align: right;
@@ -51,4 +59,31 @@ nav {
   flex-direction: row;
   justify-content: space-between;
   margin: 50px;
+}
+
+.gallery {
+  display: flex;
+}
+
+.product-display {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin: 20px;
+  max-width: 90vw;
+}
+
+.card {
+  max-width: 40vw;
+  gap: 10px;
+}
+
+.card-content {
+  text-align: center;
+}
+
+span {
+  text-align: center;
 }

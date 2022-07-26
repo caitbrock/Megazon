@@ -5,7 +5,6 @@ from django.conf.urls.static import static
 
 urlpatterns = [
   path('', views.home, name='home'),
-  path('', views.product_list, name="product-list"),
   path('about/', views.about, name='about'),
   path('dashboard/', views.dashboard, name="dashboard"),
   path('accounts/', include("django.contrib.auth.urls")),

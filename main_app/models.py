@@ -1,6 +1,5 @@
 from unicodedata import category
 from django.db import models
-import django_filters
 from django.urls import reverse
 from django.contrib.auth.models import User
 
@@ -18,6 +17,7 @@ class Profile(models.Model):
     description = models.CharField(max_length=250)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     img = models.ImageField(upload_to='userProfileImages')
+    
     def __str__(self):
         return self.name
 
@@ -34,13 +34,6 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
-class ProductFilter(django_filters.FilterSet):
-    name = django_filters.CharFilter(lookup_expr='iexact')
-
-    class Meta:
-        model = Product
-        fields = ['price', 'category_type']
-
 class Order(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quant_ordered = models.IntegerField()
@@ -49,7 +42,6 @@ class Order(models.Model):
 
     def __str__(self):
         return self.name
-
 
     def get_absolute_url(self):
         return reverse('detail', kwargs={'product_id': self.id})

@@ -11,7 +11,6 @@ urlpatterns = [
 
 #   path('cats/', views.cats_index, name='index'),
 #   path('cats/<int:cat_id>/',views.cats_detail,name='detail')
-  path('dashboard/', views.dashboard, name="dashboard"),
   path('accounts/', include("django.contrib.auth.urls")),
   path('register/', views.register, name ="register"),
   path('products/<int:product_id>/', views.products_detail, name='detail'),
@@ -21,8 +20,8 @@ urlpatterns = [
   path('products/<int:pk>/update', views.ProductUpdate.as_view(), name='products_update'),
   path('products/<int:pk>/delete/', views.ProductDelete.as_view(), name='products_delete'),
   path('profile/create/', views.ProfileCreate.as_view(), name='profile_create'),
+  path('profile/<int:pk>/update', views.ProfileUpdate.as_view(), name='profile_update'),
 ]
-
 
 if settings.DEBUG:  
         urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)  

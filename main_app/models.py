@@ -15,7 +15,7 @@ class Profile(models.Model):
     last_name = models.CharField(max_length=100)
     email = models.CharField(max_length=100)
     description = models.CharField(max_length=250)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     img = models.ImageField(upload_to='userProfileImages')
     def __str__(self):
         return self.first_name
@@ -31,6 +31,7 @@ class Product(models.Model):
     quant_sell = models.IntegerField()
     def __str__(self):
         return self.name
+
 
 class Order(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)

@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Product
+from .models import Product, ProductFilter
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 # Create your views here.
 
@@ -23,6 +23,9 @@ def about(request):
 def dashboard(request):
     return render(request, "users/dashboard.html")
 
+def product_list(request):
+    f = ProductFilter(request.GET, queryset=Product.objects.all())
+    return render(request, 'my_app/template.html', {'filter': f})
 
 class ProductCreate(CreateView):
   model = Product

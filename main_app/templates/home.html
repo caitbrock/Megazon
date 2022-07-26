@@ -1,15 +1,49 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %}
+{% block content %}
 
-<h1>Explore</h1>
 
-{% for product in products %}
+<div class="hero-image">
+  <div class="hero-text">
+    <h1>Metamazon</h1>
+    <h6>Meeting your virtual needs</h6>
+  </div>
+</div>
+
+<div class="filters">
+  <div class="filter-type"><i class="material-icons prefix">filter_list</i>
+    <select id="category-type">
+      <option class="filter" selected disabled>Filter Category</option>
+      <option class="filter" value="all" data-filter="all" selected>All</option>
+      <option class="filter" value="D">Digital Art</option>
+      <option class="filter" value="C">Course</option>
+      <option class="filter" value="M">Music</option>
+      <option class="filter" value="S">Service</option>
+    </select>
+  </div>
+
+  <div class="filter-cost">
+    <label>Sort by Price:</label>
+    <button class="sort btn btn-floating waves-effect light-grey text-darken-1" data-sort="price:asc"><i class="small material-icons">arrow_upward</i></button>
+    <button class="sort btn btn-floating waves-effect light-grey text-darken-1" data-sort="price:desc"><i class="small material-icons">arrow_downward</i></button>
+  </div>
+</div>
+
+
+{% for product in product %}
 <div class="card">
   <a href="{% url 'detail' product.id %}">
     <div class="card-content">
-      <span class="card-title">{{ product.name }}</span>
-      <p>description: {{ product.description }}</p>
-      <p>price: {{ product.price }}</p>
+      <span class="card-title">
+        {{ product.name }}</span>
+      <img src="/static/images/{{product.img}}">
+      <p>description:
+        {{ product.description }}
+      </p>
+      <p>price:
+        {{ product.price }}
+      </p>
     </div>
   </a>
 </div>
-{% endfor %}{% endblock %}
+{% endfor %}
+{% endblock %}

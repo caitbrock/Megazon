@@ -50,8 +50,12 @@ def profile(request):
 
 class ProductCreate(CreateView):
     model = Product
+<<<<<<< HEAD
     fields = ['name', 'description', 'price','img','quant_sell']
     success_url = '/'
+=======
+    fields = ['name', 'description', 'price', 'img', 'quant_sell']
+>>>>>>> HomeFilter
 
 class ProductUpdate(UpdateView):
     model = Product

@@ -21,11 +21,8 @@ def products_detail(request,product_id):
 def about(request):
     return render(request, 'about.html')
 
-
-
 def dashboard(request):
-    user = Profile.objects.get(user=request.user)
-    return render(request, "users/dashboard.html",{'user':user})
+    return render(request, "users/dashboard.html")
 
 def register(request):
  if request.method == "GET":
@@ -50,12 +47,8 @@ def profile(request):
 
 class ProductCreate(CreateView):
     model = Product
-<<<<<<< HEAD
     fields = ['name', 'description', 'price','img','quant_sell']
     success_url = '/'
-=======
-    fields = ['name', 'description', 'price', 'img', 'quant_sell']
->>>>>>> HomeFilter
 
 class ProductUpdate(UpdateView):
     model = Product

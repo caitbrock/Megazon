@@ -16,7 +16,7 @@ class Profile(models.Model):
     email = models.CharField(max_length=100)
     description = models.CharField(max_length=250)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    img = models.ImageField(upload_to='userProfileImages', default='/static/images/Pepe.jpg')
+    img = models.ImageField(upload_to='userProfileImages')
     def __str__(self):
         return self.name
 
@@ -26,7 +26,7 @@ class Product(models.Model):
     description = models.CharField(max_length=250)
     price = models.IntegerField()
     category_type = models.CharField(max_length=1, choices=CATEGORY_TYPE, default=CATEGORY_TYPE[0][0])
-    img = models.ImageField(upload_to='images', default='/static/images/Pepe.jpg')
+    img = models.ImageField(upload_to='images')
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     quant_sell = models.IntegerField()
     def __str__(self):

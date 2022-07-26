@@ -1,44 +1,36 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Explore</h1>
 
-<div class="input-field col s12 m6">
-  <div class="select-wrapper">
-    <i class="material-icons prefix">filter_list</i>
-    <select id="FilterSelect">
+<div class="hero-image">
+  <div class="hero-text">
+    <h1>Metamazon</h1>
+    <p>All of your virtual needs</p>
+    <button>Explore Now</button>
+  </div>
+</div>
+
+<div class="filters">
+  <div class="input-field col s6"><i class="material-icons prefix">filter_list</i>
+    <select id="category-type">
       <option class="filter" selected disabled>Filter Category</option>
       <option class="filter" value="all" data-filter="all" selected>All</option>
-      <option class="filter" value=".category-graphics">Digital Art</option>
-      <option class="filter" value=".category-code">Course</option>
-      <option class="filter" value=".category-versions">Music</option>
-      <option class="filter" value=".category-publishing">Service</option>
+      <option class="filter" value="category_type-D">Digital Art</option>
+      <option class="filter" value="category_type-C">Course</option>
+      <option class="filter" value="category_type-M">Music</option>
+      <option class="filter" value="category_type-S">Service</option>
     </select>
   </div>
-</div>
 
-<div class="filter-cost">
-  <span class="right">
-    <label>Sort:</label>
-    <button class="sort btn btn-floating waves-effect btn-flat grey-text text-darken-1" data-sort="price:asc"><i class="small material-icons">arrow_upward</i></button>
-    <button class="sort btn btn-floating waves-effect btn-flat grey-text text-darken-1" data-sort="price:desc"><i class="small material-icons">arrow_downward</i></button></button>
-
-  </span>
-</div>
-
-<div class="row">
-  <div class="col s12 m4 l4">
-    <p>Image</p>
-  </div>
-  <div class="col s12 m4 l4">
-    <p>Image</p>
-  </div>
-  <div class="col s12 m4 l4">
-    <p>Image</p>
+  <div class="filter-cost">
+    <label>Sort by Price:</label>
+    <button class="sort btn btn-floating waves-effect light-grey text-darken-1" data-sort="price:asc"><i class="small material-icons">arrow_upward</i></button>
+    <button class="sort btn btn-floating waves-effect light-grey text-darken-1" data-sort="price:desc"><i class="small material-icons">arrow_downward</i></button>
   </div>
 </div>
 
-{% for product in products %}
+
+{% for product in product %}
 <div class="card">
   <a href="{% url 'detail' product.id %}">
     <div class="card-content">

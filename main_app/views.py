@@ -17,15 +17,12 @@ def products_detail(request,product_id):
   return render(request,'products/detail.html', {
     'product': product,
   })
-
 def about(request):
     return render(request, 'about.html')
 
 
-
 def dashboard(request):
-    user = Profile.objects.get(user=request.user)
-    return render(request, "users/dashboard.html",{'user':user})
+    return render(request, "users/dashboard.html")
 
 def register(request):
  if request.method == "GET":
@@ -38,24 +35,23 @@ def register(request):
   if form.is_valid():
    user = form.save()
    login(request, user)
-   return redirect(reverse("dashboard"))
+   return redirect(reverse("profile_create"))
 
 def cart(request):
     return render(request, 'cart.html')
 
 def profile(request):
-    user = Profile.objects.get(user=request.user)
-    products = Product.objects.all()
-    return render(request, 'profile.html',{'products': products,'user':user})
+    try:
+        user = Profile.objects.get(user=request.user)
+        products = Product.objects.all()
+        return render(request, 'profile.html',{'products': products,'user':user})
+    except:
+        return redirect(reverse("profile_create"))
 
 class ProductCreate(CreateView):
     model = Product
-<<<<<<< HEAD
     fields = ['name', 'description', 'price','img','quant_sell']
     success_url = '/'
-=======
-    fields = ['name', 'description', 'price', 'img', 'quant_sell']
->>>>>>> HomeFilter
 
 class ProductUpdate(UpdateView):
     model = Product
@@ -67,10 +63,11 @@ class ProductDelete(DeleteView):
 
 class ProfileCreate(CreateView):
     model = Profile
-    fields = '__all__'
+    fields = ['first_name', 'last_name', 'email','description','img']
     def form_valid(self, form):
     # Assign the logged in user (self.request.user)
-        form.instance.user = self.request.user  # form.instance is the cat
+        form.instance.user = self.request.user
+        print(self.request.user)  # form.instance is the cat
     # Let the CreateView do its job as usual
         return super().form_valid(form)
     success_url = '/profile/'

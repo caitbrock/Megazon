@@ -4,7 +4,6 @@
     <div class="card">
       <img src="/{{product.img}}">
       <!-- add this single line below -->
-      <a href="/products/{{ product.id }}">
 
         <div class="card-content">
           <span class="card-title">
@@ -26,7 +25,7 @@
           <form action="{% url 'products_delete' product.id %}" method="POST">
             {%csrf_token%} <button type="submit">Delete</button>
           </form>
-      </a>
+
     </div>
   </div>
 </div>

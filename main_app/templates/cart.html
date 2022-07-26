@@ -1,5 +1,11 @@
 {% extends 'base.html' %} {% block content %}
 
 <h1>Cart</h1>
-
-{% endblock %}
+{% load cart_tag %} Total Length: {{request.session.cart|length}}<br />
+{% for key,value in request.session.cart.items %} {{value.name}}
+${{value.price}} Quantity:{{value.quantity}}<img
+  style="width: 100px"
+  src="{{value.img}}"
+/>
+Total {{value.price|multiply:value.quantity }}<br />
+{% endfor %} {%endblock %}

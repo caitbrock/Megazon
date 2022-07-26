@@ -21,6 +21,16 @@ urlpatterns = [
   path('products/<int:pk>/delete/', views.ProductDelete.as_view(), name='products_delete'),
   path('profile/create/', views.ProfileCreate.as_view(), name='profile_create'),
   path('profile/<int:pk>/update', views.ProfileUpdate.as_view(), name='profile_update'),
+
+  path('cart/add/<int:id>/', views.cart_add, name='cart_add'),
+  path('cart/item_clear/<int:id>/', views.item_clear, name='item_clear'),
+  path('cart/item_increment/<int:id>/',
+         views.item_increment, name='item_increment'),
+  path('cart/item_decrement/<int:id>/',
+         views.item_decrement, name='item_decrement'),
+  path('cart/cart_clear/', views.cart_clear, name='cart_clear'),
+  path('cart/cart-detail/',views.cart_detail,name='cart_detail'),
+
 ]
 
 if settings.DEBUG:  

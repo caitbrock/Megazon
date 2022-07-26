@@ -25,7 +25,10 @@
           <form action="{% url 'products_delete' product.id %}" method="POST">
             {%csrf_token%} <button type="submit">Delete</button>
           </form>
-
+<a href="{% url 'cart_add' product.id %}">Add To Cart</a>
+<a href="{% url 'cart_clear' %}">Clear Cart</a>
+<a href="{% url 'item_increment' product.id %}">Increament</a>
+<a href="{% url 'item_decrement' product.id %}">Decrement</a>
     </div>
   </div>
 </div>

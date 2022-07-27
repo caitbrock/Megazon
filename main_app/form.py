@@ -11,4 +11,4 @@ class CustomUserCreationForm(UserCreationForm):
 class ProductForm(ModelForm):
     class Meta:
         model = Product
-        fields = ['type']
+        fields = ['category_type']

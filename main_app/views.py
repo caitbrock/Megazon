@@ -5,7 +5,11 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 from django.contrib.auth import login
 from django.urls import reverse
-from .form import CustomUserCreationForm, ProductForm
+from .form import CustomUserCreationForm,ProductForm
+from django.contrib.auth.decorators import login_required
+from cart.cart import Cart
+
+# Create your views here.
 
 
 # Create your views here.
@@ -21,12 +25,9 @@ def products_detail(request,product_id):
   return render (request, 'products/detail.html', {
     'product': product,
   })
-
 def about(request):
     return render(request, 'about.html')
 
-def dashboard(request):
-    return render(request, 'users/dashboard.html')
 
 def register(request):
  if request.method == "GET":
@@ -41,10 +42,6 @@ def register(request):
    login(request, user)
    return redirect(reverse("profile_create"))
 
-def orders_detail(request, order_id):
-  orders = Order.objects.get(id=order_id)
-  return render(request, 'carts.html', { 'orders': orders })
-
 def cart(request):
     return render(request, 'cart.html')
 
@@ -52,13 +49,14 @@ def profile(request):
     if(Profile.objects.get(user=request.user)):
         profile = Profile.objects.get(user=request.user)
         products = Product.objects.filter(user=request.user)
-        return render(request, 'profile.html', {'products': products,'profile': profile})
+        return render(request, 'profile.html',{'products': products,'profile':profile})
     else:
-        return redirect('profile_create')
+        return redirect("profile_create")
 
 class ProductCreate(CreateView):
+
     model = Product
-    fields = '__all__'
+    fields = ['name', 'description','category_type', 'price','img','quant_sell']
     def form_valid(self, form):
     # Assign the logged in user (self.request.user)
         form.instance.user = self.request.user
@@ -98,3 +96,48 @@ class ProfileUpdate(UpdateView):
     fields = ['first_name', 'last_name', 'email','description','img']
     success_url = '/profile/'
 
+
+
+@login_required(login_url="/users/login")
+def cart_add(request, id):
+    cart = Cart(request)
+    product = Product.objects.get(id=id)
+    cart.add(product=product)
+    return redirect("home")
+
+
+@login_required(login_url="/users/login")
+def item_clear(request, id):
+    cart = Cart(request)
+    product = Product.objects.get(id=id)
+    cart.remove(product)
+    return redirect("cart_detail")
+
+
+@login_required(login_url="/users/login")
+def item_increment(request, id):
+    cart = Cart(request)
+    product = Product.objects.get(id=id)
+    cart.add(product=product)
+    return redirect("cart_detail")
+
+
+@login_required(login_url="/users/login")
+def item_decrement(request, id):
+    cart = Cart(request)
+    product = Product.objects.get(id=id)
+    cart.decrement(product=product)
+    return redirect("cart_detail")
+
+
+@login_required(login_url="/users/login")
+def cart_clear(request):
+    cart = Cart(request)
+    cart.clear()
+    return redirect("cart_detail")
+
+
+@login_required(login_url="/users/login")
+def cart_detail(request):
+    return render(request, 'cart/cart_detail.html')
+ 

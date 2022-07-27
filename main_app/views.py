@@ -5,7 +5,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 from django.contrib.auth import login
 from django.urls import reverse
-from .form import CustomUserCreationForm,ProductForm
+from .form import CustomUserCreationForm, ProductForm
 from django.contrib.auth.decorators import login_required
 from cart.cart import Cart
 
@@ -43,6 +43,7 @@ def register(request):
    return redirect(reverse("profile_create"))
 
 def cart(request):
+
     return render(request, 'cart.html')
 
 def profile(request):

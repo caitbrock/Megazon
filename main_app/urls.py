@@ -28,6 +28,7 @@ urlpatterns = [
          views.item_decrement, name='item_decrement'),
   path('cart/cart_clear/', views.cart_clear, name='cart_clear'),
   path('cart/cart-detail/',views.cart_detail,name='cart_detail'),
+  path('cart/', views.cart, name='cart'),
 
 ]
 

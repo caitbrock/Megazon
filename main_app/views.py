@@ -1,3 +1,4 @@
+from itertools import product
 from urllib import request
 from django.shortcuts import redirect, render
 from .models import Product, Profile, Order
@@ -96,6 +97,17 @@ class ProfileUpdate(UpdateView):
     fields = ['first_name', 'last_name', 'email','description','img']
     success_url = '/profile/'
 
+def checkout(request):
+    for item in Cart(request).__dict__['cart'].items():
+        order=Order.objects.create(
+            product=Product.objects.get(id=item[1]['product_id']),
+            quant_ordered = 1,
+            available = False,
+            trading_price = "0",
+        )
+        Order.save(order)
+
+    return redirect("home")
 
 
 @login_required(login_url="/users/login")

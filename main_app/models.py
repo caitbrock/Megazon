@@ -1,3 +1,4 @@
+from itertools import product
 from unicodedata import category
 from django.db import models
 from django.urls import reverse
@@ -37,10 +38,10 @@ class Order(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quant_ordered = models.IntegerField()
     available = models.BooleanField(default=False)
-    trading_price = models.IntegerField()
+    trading_price = models.CharField(max_length=250)
 
     def __str__(self):
-        return self.name
+        return self.product.name
 
 
     def get_absolute_url(self):

@@ -1,13 +1,16 @@
-{% extends 'base.html' %}
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 <h2>Login</h2>
 
 <!-- login Form -->
 <form method="post">
-<!-- every djnogo form need  csrf_token -->
-{% csrf_token %}
-<!--Django use dictinories to pass data to template to  rendering it-->
-{{ form.as_p }}
-<input type="submit" value="Login">
+  <!-- every djnogo form need  csrf_token -->
+  {% csrf_token %}
+  <!--Django use dictinories to pass data to template to  rendering it-->
+  {{ form.as_p }}
+  <input type="submit" value="Login" />
 </form>
+
+<a href="/">back to home page</a>
+<a href="{% url 'password_reset' %}">Reset Password</a>
+<a href="{% url 'register'  %}">Register</a>
 {% endblock %}

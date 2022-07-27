@@ -41,8 +41,6 @@
         <span class="card-title">
           {{ product.name }}</span>
       </a>
-      {% csrf_token %}
-      <input type='hidden' value="{{ product.id }}" class="product_id">
       <p>
         {{ product.description }}
       </p>

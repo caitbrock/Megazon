@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
   <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/jquery.mixitup/latest/jquery.mixitup.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 
@@ -50,6 +51,51 @@
   $(document).ready(function() {
     $(".dropdown-trigger").dropdown();
   });
+  // MATERIALIZE FRAMEWORK - https://materializecss.com
+  $(document).ready(function() {
+    //FORM SELECT
+    $('select').formSelect(); // https://materializecss.com/select.html
+    // MODAL
+    $('.modal').modal();
+    // TABS
+    $('ul.tabs').tabs();
+    // SCROLLSPY
+    $('.scrollspy').scrollSpy();
+  });
+
+  // LazySizes
+  window.lazySizesConfig = window.lazySizesConfig || {};
+  window.lazySizesConfig.expand;
+
+  // MixItUp 3
+  $(function() {
+    $('#Container').mixItUp({
+      load: {
+        // filter: 'all'
+        filter: 'all'
+      },
+      controls: {
+        toggleFilterButtons: false
+      }
+    });
+  });
+
+
+
+  // DROPDOWN SELECT
+  $(function() {
+    var $filterSelect = $('#FilterSelect'),
+      // $sortSelect = $('#SortSelect'),
+      $container = $('#Container');
+
+    $container.mixItUp();
+
+    $filterSelect.on('change', function() {
+      $container.mixItUp('filter', this.value);
+    });
+  });
+
+  
 </script>
 
 </html>

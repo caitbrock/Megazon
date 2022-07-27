@@ -86,3 +86,106 @@ nav {
 span {
   text-align: center;
 }
+
+#sorting-row {
+  margin: 20px
+}
+
+#sorting-row {
+	padding-top:0px;
+	@media only screen and (max-width: 992px) {
+		padding-top:46px;
+	}
+}
+.lazyload {
+  opacity: 0;
+}
+.lazyloading {
+  opacity: 1;
+  transition: 600ms opacity;
+  background: #f7f7f7 url(https://afarkas.github.io/lazysizes/assets/imgs/loader.gif) no-repeat center;
+  min-height: 60px;
+}
+#Container .mix{
+    display: none;
+}
+
+.project-cards-container {
+	-webkit-backface-visibility: hidden;
+
+}
+
+.mix {
+  display: inline-block;
+}
+
+.product-detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.counter {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 200px;
+
+}
+
+.number-entry {
+  display: flex;
+  font-size: 12px;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 20px;
+  border: solid;
+  border-color: rgb(172, 172, 172);
+  border-radius: 10px;
+  border: 1px solid rgb(172, 172, 172);
+}
+
+#plus {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  background-color: #26a69968;
+  color: rgb(172, 172, 172);
+  border-radius: 2px;
+  border: 1px solid #26a69a;
+
+}
+
+#plus:hover {
+  background-color: #26a69a;
+  color: white;
+}
+
+#minus {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  background-color: #26a69968;
+  color: rgb(172, 172, 172);
+  border-radius: 2px;
+  border: 1px solid #26a69a;
+
+}
+
+#minus:hover {
+  background-color: #26a69a;
+  color: white;
+}
+
+h6 {
+  font-size: 12px;
+  margin: 0;
+}

@@ -4,7 +4,7 @@ body {
   width: 100vw;
   flex-direction: column;
 }
-    
+
 main {
   flex: 1 0 auto;
 }
@@ -31,7 +31,7 @@ footer.page-footer {
 nav {
   background-color: rgb(37, 37, 37);
 }
-  
+
 .page-footer {
   background-color: rgb(37, 37, 37);
 }
@@ -85,4 +85,30 @@ nav {
 
 span {
   text-align: center;
+}
+#sorting-row {
+  padding-top: 0px;
+  @media only screen and (max-width: 992px) {
+    padding-top: 46px;
+  }
+}
+.lazyload {
+  opacity: 0;
+}
+.lazyloading {
+  opacity: 1;
+  transition: 600ms opacity;
+  background: #f7f7f7
+    url(https://afarkas.github.io/lazysizes/assets/imgs/loader.gif) no-repeat
+    center;
+  min-height: 60px;
+}
+#Container .mix {
+  display: none;
+}
+.project-cards-container {
+  -webkit-backface-visibility: hidden;
+}
+.mix {
+  display: inline-block;
 }

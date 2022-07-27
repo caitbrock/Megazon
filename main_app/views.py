@@ -5,7 +5,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 from django.contrib.auth import login
 from django.urls import reverse
-from .form import CustomUserCreationForm,ProductForm
+from .form import CustomUserCreationForm
 from django.contrib.auth.decorators import login_required
 from cart.cart import Cart
 
@@ -56,7 +56,7 @@ def profile(request):
 class ProductCreate(CreateView):
 
     model = Product
-    fields = ['name', 'description','category_type', 'price','img','quant_sell']
+    fields = ['name', 'description', 'price','category_type','img','quant_sell']
     def form_valid(self, form):
     # Assign the logged in user (self.request.user)
         form.instance.user = self.request.user
@@ -140,4 +140,3 @@ def cart_clear(request):
 @login_required(login_url="/users/login")
 def cart_detail(request):
     return render(request, 'cart/cart_detail.html')
- 

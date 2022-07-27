@@ -7,29 +7,33 @@
   </div>
 </div>
 
-<div class="filters">
-  <div class="filter-type">
-    <a class="dropdown-trigger material-icons prefix" href="#" data-target="dropdown2">filter_list</a>
-    <ul id="dropdown2" class="dropdown-content">
-      <li><a href="#!">All</a></li>
-      <li><a href="#!">Digital Art</a></li>
-      <li><a href="#!">Course</a></li>
-      <li><a href="#!">Music</a></li>
-      <li><a href="#!">Service</a></li>
-    </ul>
-  </div>
 
-
-  <div class="filter-cost">
-    <label>Sort by Price:</label>
-    <button class="sort btn btn-floating waves-effect light-grey text-darken-1" data-sort="price:asc">
-      <i class="small material-icons">arrow_upward</i>
-    </button>
-    <button class="sort btn btn-floating waves-effect light-grey text-darken-1" data-sort="price:desc">
-      <i class="small material-icons">arrow_downward</i>
-    </button>
+<div class="input-field col s12 m6 hide-on-med-and-down">
+  <div class="select-wrapper">
+    <i class="material-icons prefix">filter_list</i>
+    <select id="FilterSelect">
+      <option class="filter" selected disabled>Filter Category</option>
+      <option class="filter" value="all" data-filter="all" selected>All</option>
+      {% for product in products %}
+      <option class="filter" value="{{ product.category_type }}">
+        {{ product.category_type }}
+      </option>
+    </select>
   </div>
+  {% endfor %}
 </div>
+
+<div class="filter-cost">
+  <label>Sort by Price:</label>
+  <button class="sort btn btn-floating waves-effect light-grey text-darken-1" data-sort="price:asc">
+    <i class="small material-icons">arrow_upward</i>
+  </button>
+  <button class="sort btn btn-floating waves-effect light-grey text-darken-1" data-sort="price:desc">
+    <i class="small material-icons">arrow_downward</i>
+  </button>
+</div>
+</div>
+
 
 
 <div class="product-display">
@@ -58,4 +62,267 @@
 
 
 
-{% endblock %}
+<!-- 	SORTING BUTTON'S ROW	 -->
+<div id="sorting-row" class="row">
+  <div class="controls">
+
+    <div class="col s12">
+      <div class="input-field col s2 m6 hide-on-large-only">
+        <a class="modal-trigger btn btn-floating waves-effect btn-flat grey-text text-darken-1" href="#modal1">
+          <i class="material-icons">info</i>
+        </a>
+      </div>
+
+
+
+
+      <div class="input-field col s10 m6">
+        <span class="right">
+          <label>Sort:</label>
+          <button class="sort btn btn-floating waves-effect btn-flat grey-text text-darken-1" data-sort="name:asc">A-Z</button>
+          <button class="sort btn btn-floating waves-effect btn-flat grey-text text-darken-1" data-sort="name:desc">Z-A</button>
+          <button class="sort btn btn-floating waves-effect btn-flat grey-text text-darken-1" data-sort="myorder:asc"><i class="material-icons">arrow_upward</i></button>
+          <button class="sort btn btn-floating waves-effect btn-flat grey-text text-darken-1" data-sort="myorder:desc"><i class="material-icons">arrow_downward</i></button>
+        </span>
+      </div>
+
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="container">
+      <div class="col s12">
+        <p>Uses <a href="https://www.kunkalabs.com/mixitup/" target="_blank">MixItUp</a> for displaying the items and utilizes <a href="https://github.com/aFarkas/lazysizes" target="_blank">lazysizes</a> for lazy loading images. Lazysizes is <a href="https://web.dev/fast/use-lazysizes-to-lazyload-images" target="_blank">recommended by Google</a> for web performance. The dropdown changes to tabs on mobile. Try it out and hit that heart button if this helped you in some fashion.</p>
+        <p>You can view what this code here evolved into on my own website <a href="https://jay.holtslander.ca/technical-skills.html" target="_blank">here</a>.</p>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div id="Container" class="project-cards-container">
+      <div class="col s6 m3 mix category-code" data-myorder="12" data-name="Atom">
+        <div class="card">
+          <div class="card-image">
+            <img data-src="https://jay.holtslander.ca/wp-content/uploads/2015/03/atom.jpg" class="lazyload responsive-img" ondragstart="return false;">
+          </div>
+          <div class="card-content">Atom</div>
+        </div>
+      </div>
+      <div class="col s6 m3 mix category-code" data-myorder="13" data-name="Brackets">
+        <div class="card">
+          <div class="card-image">
+            <img data-src="https://jay.holtslander.ca/wp-content/uploads/2015/03/brackets-logo.jpg" class="lazyload responsive-img" ondragstart="return false;">
+          </div>
+          <div class="card-content">Brackets</div>
+        </div>
+      </div>
+      <div class="col s6 m3 mix category-graphics" data-myorder="6" data-name="Cinemagraph Pro">
+        <div class="card">
+          <div class="card-image">
+            <img data-src="https://jay.holtslander.ca/wp-content/uploads/2015/03/cinemagraph-pro-logo.jpg" class="lazyload responsive-img" ondragstart="return false;">
+          </div>
+          <div class="card-content truncate">Cinemagraph Pro</div>
+        </div>
+      </div>
+      <div class="col s6 m3 mix category-code" data-myorder="14" data-name="Codekit">
+        <div class="card">
+          <div class="card-image">
+            <img data-src="https://jay.holtslander.ca/wp-content/uploads/2015/03/codekit.jpg" class="lazyload responsive-img" ondragstart="return false;">
+          </div>
+          <div class="card-content">Codekit</div>
+        </div>
+      </div>
+      <div class="col s6 m3 mix category-versions" data-myorder="23" data-name="Git">
+        <div class="card">
+          <div class="card-image">
+            <img data-src="https://jay.holtslander.ca/wp-content/uploads/2015/03/git.jpg" class="lazyload responsive-img" ondragstart="return false;">
+            <span class="card-badge certified"><i class="material-icons">school</i></span>
+          </div>
+          <div class="card-content">Git</div>
+        </div>
+      </div>
+      <div class="col s6 m3 mix category-versions" data-myorder="15" data-name="Github">
+        <div class="card">
+          <div class="card-image">
+            <img data-src="https://jay.holtslander.ca/wp-content/uploads/2015/03/githubmac.jpg" class="lazyload responsive-img" ondragstart="return false;">
+          </div>
+          <div class="card-content truncate">Github for Mac</div>
+        </div>
+      </div>
+      <div class="col s6 m3 mix category-versions category-servers" data-myorder="19" data-name="Gitlab">
+        <div class="card">
+          <div class="card-image">
+            <img data-src="https://jay.holtslander.ca/wp-content/uploads/2015/03/gitlab-logo.jpg" class="lazyload responsive-img" ondragstart="return false;">
+          </div>
+          <div class="card-content">Gitlab</div>
+        </div>
+      </div>
+      <div class="col s6 m3 mix category-publishing category-graphics" data-myorder="2" data-name="Illustrator">
+        <div class="card">
+          <div class="card-image">
+            <img data-src="https://jay.holtslander.ca/wp-content/uploads/2015/03/illustrator.jpg" class="lazyload responsive-img" ondragstart="return false;">
+            <span class="card-badge new"><i class="material-icons">new_releases</i></span>
+          </div>
+          <div class="card-content">Illustrator</div>
+        </div>
+      </div>
+      <div class="col s6 m3 mix category-publishing" data-myorder="3" data-name="InDesign">
+        <div class="card">
+          <div class="card-image">
+            <img data-src="https://jay.holtslander.ca/wp-content/uploads/2015/03/indesign.jpg" class="lazyload responsive-img" ondragstart="return false;">
+          </div>
+          <div class="card-content">InDesign</div>
+        </div>
+      </div>
+      <div class="col s6 m3 mix category-prototyping" data-myorder="8" data-name="Invision">
+        <div class="card">
+          <div class="card-image">
+            <img data-src="https://jay.holtslander.ca/wp-content/uploads/2015/03/invision-logo.jpg" class="lazyload responsive-img" ondragstart="return false;">
+          </div>
+          <div class="card-content">Invision</div>
+        </div>
+      </div>
+      <div class="col s6 m3 mix category-graphics" data-myorder="10" data-name="Keyshape App">
+        <div class="card">
+          <div class="card-image">
+            <img data-src="https://jay.holtslander.ca/wp-content/uploads/2015/03/keyshapeapp-logo.jpg" class="lazyload responsive-img" ondragstart="return false;">
+          </div>
+          <div class="card-content truncate">Keyshape App</div>
+        </div>
+      </div>
+      <div class="col s6 m3 mix category-prototyping" data-myorder="7" data-name="Marvel">
+        <div class="card">
+          <div class="card-image">
+            <img data-src="https://jay.holtslander.ca/wp-content/uploads/2015/03/marvel-logo.jpg" class="lazyload responsive-img" ondragstart="return false;">
+          </div>
+          <div class="card-content">Marvel</div>
+        </div>
+      </div>
+      <div class="col s6 m3 mix category-graphics" data-myorder="1" data-name="Photoshop">
+        <div class="card">
+          <div class="card-image">
+            <img data-src="https://jay.holtslander.ca/wp-content/uploads/2015/03/photoshop.jpg" class="lazyload responsive-img" ondragstart="return false;">
+          </div>
+          <div class="card-content">Photoshop</div>
+        </div>
+      </div>
+      <div class="col s6 m3 mix category-3" data-myorder="9" data-name="Pixate">
+        <div class="card">
+          <div class="card-image">
+            <img data-src="https://jay.holtslander.ca/wp-content/uploads/2015/03/pixate-logo.jpg" class="lazyload responsive-img" ondragstart="return false;">
+          </div>
+          <div class="card-content">Pixate</div>
+        </div>
+      </div>
+      <div class="col s6 m3 mix category-servers" data-myorder="21" data-name="Sequel Pro">
+        <div class="card">
+          <div class="card-image">
+            <img data-src="https://jay.holtslander.ca/wp-content/uploads/2015/03/sequel-pro-logo.jpg" class="lazyload responsive-img" ondragstart="return false;">
+          </div>
+          <div class="card-content">Sequel Pro</div>
+        </div>
+      </div>
+      <div class="col s6 m3 mix category-graphics" data-myorder="4" data-name="Sketch">
+        <div class="card">
+          <div class="card-image">
+            <img data-src="https://jay.holtslander.ca/wp-content/uploads/2015/05/sketch-logo.jpg" class="lazyload responsive-img" ondragstart="return false;">
+          </div>
+          <div class="card-content">Sketch</div>
+        </div>
+      </div>
+      <div class="col s6 m3 mix category-graphics" data-myorder="5" data-name="SketchUp">
+        <div class="card">
+          <div class="card-image">
+            <img data-src="https://jay.holtslander.ca/wp-content/uploads/2015/03/sketchup-logo.jpg" class="lazyload responsive-img" ondragstart="return false;">
+          </div>
+          <div class="card-content">SketchUp</div>
+        </div>
+      </div>
+      <div class="col s6 m3 mix category-versions" data-myorder="17" data-name="Sourcetree">
+        <div class="card">
+          <div class="card-image">
+            <img data-src="https://jay.holtslander.ca/wp-content/uploads/2015/03/sourcetree-logo.jpg" class="lazyload responsive-img" ondragstart="return false;">
+          </div>
+          <div class="card-content">Sourcetree</div>
+        </div>
+      </div>
+      <div class="col s6 m3 mix category-code" data-myorder="11" data-name="Sublime">
+        <div class="card">
+          <div class="card-image">
+            <img data-src="https://jay.holtslander.ca/wp-content/uploads/2017/09/sublime-text-logo.jpg" class="lazyload responsive-img" ondragstart="return false;">
+            <span class="card-badge fav"><i class="material-icons">favorite</i></span>
+          </div>
+          <div class="card-content">Sublime Text</div>
+        </div>
+      </div>
+      <div class="col s6 m3 mix category-versions" data-myorder="24" data-name="svn">
+        <div class="card">
+          <div class="card-image">
+            <img data-src="https://jay.holtslander.ca/wp-content/uploads/2015/03/svn.jpg" class="lazyload responsive-img" ondragstart="return false;">
+          </div>
+          <div class="card-content">Subversion</div>
+        </div>
+      </div>
+      <div class="col s6 m3 mix category-versions" data-myorder="16" data-name="Tower">
+        <div class="card">
+          <div class="card-image">
+            <img data-src="https://jay.holtslander.ca/wp-content/uploads/2015/03/tower-logo.jpg" class="lazyload responsive-img" ondragstart="return false;">
+          </div>
+          <div class="card-content">Tower</div>
+        </div>
+      </div>
+      <div class="col s6 m3 mix category-servers" data-myorder="22" data-name="Ubuntu">
+        <div class="card">
+          <div class="card-image">
+            <img data-src="https://jay.holtslander.ca/wp-content/uploads/2015/03/ubuntu-logo.jpg" class="lazyload responsive-img" ondragstart="return false;">
+          </div>
+          <div class="card-content">Ubuntu</div>
+        </div>
+      </div>
+      <div class="col s6 m3 mix category-versions" data-myorder="18" data-name="Versions">
+        <div class="card">
+          <div class="card-image">
+            <img data-src="https://jay.holtslander.ca/wp-content/uploads/2015/03/versions-logo.jpg" class="lazyload responsive-img" ondragstart="return false;">
+          </div>
+          <div class="card-content">Versions</div>
+        </div>
+      </div>
+      <div class="col s6 m3 mix category-servers" data-myorder="20" data-name="Virtualbox">
+        <div class="card">
+          <div class="card-image">
+            <img data-src="https://jay.holtslander.ca/wp-content/uploads/2015/03/virtualbox-logo.jpg" class="lazyload responsive-img" ondragstart="return false;">
+          </div>
+          <div class="card-content">Virtualbox</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Pen details</h4>
+      <p>This pen demonstrates the addition of <a href="https://www.kunkalabs.com/mixitup/" target="_blank">MixItUp 3</a> (for filtering items), and <a href="https://github.com/aFarkas/lazysizes" target="_blank">lazySizes</a> (for lazy loading) to <a href="http://materializecss.com/" target="_blank">the Materialize framework</a>. It's part of a collection of cool Materialize related pens that you can find <a href="https://codepen.io/collection/nbBqgY">here</a>.</p>
+      <ul>
+        <li><strong>lazySizes:</strong> <a href="https://afarkas.github.io/lazysizes/" target="_blank">Demo</a></li>
+        <li><strong>MixItUp 3:</strong> <a href="https://www.kunkalabs.com/mixitup/" target="_blank">Demo</a></li>
+      </ul>
+      <p>Inspired by <a href="https://codepen.io/patrickkunka/pen/gvHdi" target="_blank">this pen</a></p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect btn-flat">Ok</a>
+    </div>
+  </div>
+
+
+
+
+
+  {% endblock %}

@@ -34,7 +34,6 @@ def products_detail(request,product_id):
     'currentUser':currentUser,
     'seller':sellerProfile
   })
-
 def about(request):
     return render(request, 'about.html')
 
@@ -53,8 +52,12 @@ def register(request):
    return redirect(reverse("profile_create"))
 
 def cart(request):
+    totalAmount = 0
+    for item in Cart(request).__dict__['cart'].items():       
+        totalAmount += Product.objects.get(id=item[1]['product_id']).price * item[1]['quantity']
+    
     currentUser = request.user
-    return render(request, 'cart.html',{'currentUser':currentUser})
+    return render(request, 'cart.html',{'currentUser':currentUser,'totalAmount':totalAmount})
 
 def profile(request,profile_id):
     try:
@@ -111,8 +114,6 @@ class ProductDelete(DeleteView):
         id = self.request.user.profile.id
         return f'/profile/{id}'
 
-        
-
 class ProductDetailView(DetailView):
     model = Product
 
@@ -132,7 +133,7 @@ class ProfileCreate(CreateView):
 
 class ProfileUpdate(UpdateView):
     model = Profile
-    fields = ['first_name', 'last_name', 'email','description','img']
+    fields = ['first_name', 'last_name', 'email','description','image']
     def get_success_url(self):
         id = self.request.user.profile.id
         return f'/profile/{id}'
@@ -145,7 +146,7 @@ def checkout(request):
             available = False,
             trading_price = 0,
             user=request.user
-    )
+        )
         Order.save(order)
     cart_clear(request)
     return redirect("home")
@@ -161,7 +162,6 @@ def cart_add(request, id):
 
 @login_required(login_url="/users/login")
 def item_clear(request, id):
-    print(cart,product)
     cart = Cart(request)
     product = Product.objects.get(id=id)
     cart.remove(product)
@@ -192,5 +192,7 @@ def cart_clear(request):
 
 
 @login_required(login_url="/users/login")
+def cart_detail(request):
+    return render(request, 'cart.html')
 def cart_detail(request):
     return render(request, 'cart.html')

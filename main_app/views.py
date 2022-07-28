@@ -78,7 +78,6 @@ def profile(request,profile_id):
 class ProductCreate(CreateView):
 
     model = Product
-    
     fields = ['name', 'description', 'price','category_type','image','quant_sell']
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -133,7 +132,7 @@ class ProfileCreate(CreateView):
 
 class ProfileUpdate(UpdateView):
     model = Profile
-    fields = ['first_name', 'last_name', 'email','description','image']
+    fields = ['first_name', 'last_name', 'email','description','img']
     def get_success_url(self):
         id = self.request.user.profile.id
         return f'/profile/{id}'

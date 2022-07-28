@@ -8,7 +8,7 @@ This is app is designed for the future because people will have most of the acti
 
 ### GETTING STARTED:
 
-- App is uploaded on Heroku, click here to access [Metazon](https://metazon.herokuapp.com/)
+- App is uploaded on Heroku, so you can run the app by clicking [Metazon](https://metazon.herokuapp.com/) to access 
 - Click here to access [Trello Board](https://trello.com/b/eTO21UiG/sei-project-3)
 
 ### Feature 

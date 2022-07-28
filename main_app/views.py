@@ -25,11 +25,16 @@ def home(request):
 
 def products_detail(request,product_id):
   product = Product.objects.get(id=product_id)
+
   currentUser = request.user
+  sellerProfile = Profile.objects.get(user=product.user)
+  
   return render (request, 'products/detail.html', {
     'product': product,
-    'currentUser':currentUser
+    'currentUser':currentUser,
+    'seller':sellerProfile
   })
+
 def about(request):
     return render(request, 'about.html')
 
@@ -125,9 +130,9 @@ class ProfileCreate(CreateView):
         id = self.request.user.profile.id
         return f'/profile/{id}'
 
-class ProfileUpdate(UpdateView):img
+class ProfileUpdate(UpdateView):
     model = Profile
-    fields = ['first_name', 'last_name', 'email','description','image']
+    fields = ['first_name', 'last_name', 'email','description','img']
     def get_success_url(self):
         id = self.request.user.profile.id
         return f'/profile/{id}'
@@ -140,7 +145,7 @@ def checkout(request):
             available = False,
             trading_price = 0,
             user=request.user
-        )
+    )
         Order.save(order)
     cart_clear(request)
     return redirect("home")

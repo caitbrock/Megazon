@@ -1,3 +1,4 @@
+from asyncio.windows_events import NULL
 from itertools import product
 from urllib import request
 from django.shortcuts import redirect, render
@@ -19,8 +20,11 @@ from cart.cart import Cart
 
 def home(request):
     products = Product.objects.all()
-    return render (request, 'home.html', {'products': products})
-
+    try:
+        currentUser = Profile.objects.get(user=request.user)
+        return render (request, 'home.html', {'products': products,'currentUser':currentUser})
+    except:
+        return render (request, 'home.html', {'products': products})
 def products_detail(request,product_id):
   product = Product.objects.get(id=product_id)
   return render (request, 'products/detail.html', {
@@ -46,11 +50,13 @@ def register(request):
 def cart(request):
     return render(request, 'cart.html')
 
-def profile(request):
+def profile(request,profile_id):
     if(Profile.objects.get(user=request.user)):
-        profile = Profile.objects.get(user=request.user)
-        products = Product.objects.filter(user=request.user)
-        return render(request, 'profile.html',{'products': products,'profile':profile})
+        profile = Profile.objects.get(id=profile_id)
+        products = Product.objects.filter(user=profile.user)
+        orders=Order.objects.filter(user=profile.user)
+        currentUser = request.user
+        return render(request, 'profile.html',{'products': products,'profile':profile,'collections':orders,'currentUser':currentUser})
     else:
         return redirect("profile_create")
 
@@ -65,6 +71,12 @@ class ProductCreate(CreateView):
     # Let the CreateView do its job as usual
         return super().form_valid(form)
     success_url = '/profile/'
+
+class OrderUpdate(UpdateView):
+    model = Order
+    fields = ['available', 'trading_price']
+    success_url = '/profile/'
+
 
 class ProductUpdate(UpdateView):
     model = Product
@@ -99,11 +111,13 @@ class ProfileUpdate(UpdateView):
 
 def checkout(request):
     for item in Cart(request).__dict__['cart'].items():
+
         order=Order.objects.create(
             product=Product.objects.get(id=item[1]['product_id']),
-            quant_ordered = 1,
+            quant_ordered = item[1]['quantity'],
             available = False,
-            trading_price = "0",
+            trading_price = 0,
+            user=request.user
         )
         Order.save(order)
 

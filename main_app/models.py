@@ -38,8 +38,9 @@ class Order(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quant_ordered = models.IntegerField()
     available = models.BooleanField(default=False)
-    trading_price = models.CharField(max_length=250)
-
+    trading_price = models.FloatField(max_length=20)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    
     def __str__(self):
         return self.product.name
 

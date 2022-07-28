@@ -38,6 +38,6 @@ This is app is designed for the future because people will have most of the acti
 
 ### Group member 
 
-Roccay / Cait / Elvin / Lud 
+[Roccay](https://github.com/Roccay) / [Cait](https://github.com/caitbrock) / [Elvin](https://github.com/elvinhatamov) / [Lud](https://github.com/ludlin886) 
 
 

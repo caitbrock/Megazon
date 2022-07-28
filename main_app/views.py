@@ -125,7 +125,7 @@ class ProfileCreate(CreateView):
         id = self.request.user.profile.id
         return f'/profile/{id}'
 
-class ProfileUpdate(UpdateView):
+class ProfileUpdate(UpdateView):img
     model = Profile
     fields = ['first_name', 'last_name', 'email','description','image']
     def get_success_url(self):

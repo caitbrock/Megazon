@@ -17,9 +17,6 @@
   </div>
 </div>
 
-
-
-
 <h4>My Products</h4>
 <div class="card" id="profile-card">
   {% for product in products %}
@@ -64,18 +61,16 @@
   </div>
 </div>
 
-
-
 <h4>Collections</h4>
 <div class="card" id="profile-card">
   {% for item in collections %}
   <div class="gallery col s3 m3 l3">
-    <div class="card">
-      <a href="{% url 'detail'  item.product.id  %}">
-        <div class="card-content">
+    <div class="card" style="width: 25vw">
+      <div class="card-content">
+        <a href="{% url 'detail'  item.product.id  %}">
+          <img style="width: 100px" src="/{{ item.product.image }}">
           <span class="card-title">
             {{ item.product.name }}</span>
-          <p><img style="width: 100px" src="/{{ item.product.image }}" /></p>
           <p>
             {%if item.available%}Available for Trading
             <br />price: ${{item.trading_price }}{%else%}Not Available{%endif%}
@@ -87,7 +82,7 @@
           <a href=""><button class="waves-effect waves-light btn">
               Request For Trading
             </button></a>{%endif%} {% endif %}{% endif %}
-        </div>
+      </div>
       </a>
     </div>
 

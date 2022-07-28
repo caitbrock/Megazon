@@ -23,46 +23,32 @@
     </div>
   </div>
 
-  <div class="input-field col m12 l5 hide-on-small-only">
-    <span class="right">
-      <label>Sort Name:</label>
-      <button class="sort btn btn-floating waves-effect white-text text-darken-1" data-sort="name:asc">A-Z</button>
-      <button class="sort btn btn-floating waves-effect white-text text-darken-1" data-sort="name:desc">Z-A</button>
+  {% for product in products %}
+  <div class="row">
+    <div id="Container" class="project-cards-container">
+      <div class="col s12 m6 l4 mix category-{{product.category_type}}" price="{{product.price}}" data-name="{{product.name}}">
+        <div class="card" id="">
+          <div class="card-content">
+            <a href="{% url 'detail' product.id %}">
+              <img style="height: 400px" src="/{{ product.image }}" class="lazyload responsive-img" ondragstart="return false;">
+              <span class="card-title">
+                {{ product.name }}</span>
+              <p>
+                {{ product.description }}
+              </p>
+              <p>price:
+                {{ product.price }}
+              </p>
 
-      <label>Sort Price:</label>
-      <button class="sort btn btn-floating waves-effect grey-text text-darken-1" data-sort="price:asc"><i class="material-icons">arrow_upward</i></button>
-      <button class="sort btn btn-floating waves-effect grey-text text-darken-1" data-sort="price:desc"><i class="material-icons">arrow_downward</i></button>
-    </span>
-  </div>
-</div>
+              </br>
 
+              <a href="{% url 'cart_add' product.id %}" style="color:#ffffff;"> <button class="waves-effect waves-light btn" type="Add to Cart"><i class="small material-icons">add_shopping_cart</i></button></a>
 
-{% for product in products %}
-<div class="row">
-  <div id="Container" class="project-cards-container">
-    <div class="col s12 m6 l4 mix category-{{product.category_type}}" price="{{product.price}}" data-name="{{product.name}}">
-      <div class="card" id="">
-        <div class="card-content">
-          <a href="{% url 'detail' product.id %}">
-            <img style="height: 400px" src="/{{ product.image }}" class="lazyload responsive-img" ondragstart="return false;">
-            <span class="card-title">
-              {{ product.name }}</span>
-            <p>
-              {{ product.description }}
-            </p>
-            <p>price:
-              {{ product.price }}
-            </p>
-
-            </br>
-
-            <a href="{% url 'cart_add' product.id %}" style="color:#ffffff;"> <button class="waves-effect waves-light btn" type="Add to Cart"><i class="small material-icons">add_shopping_cart</i></button></a>
-
+          </div>
         </div>
+
       </div>
-
+      {% endfor %}
     </div>
-    {% endfor %}
-  </div>
 
-  {% endblock %}
+    {% endblock %}

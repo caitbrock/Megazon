@@ -1,4 +1,4 @@
-from asyncio.windows_events import NULL
+from django.http import HttpResponseRedirect
 from itertools import product
 from urllib import request
 from django.shortcuts import redirect, render
@@ -52,7 +52,6 @@ def register(request):
    return redirect(reverse("profile_create"))
 
 def cart(request):
-
     return render(request, 'cart.html')
 
 def profile(request,profile_id):
@@ -73,10 +72,7 @@ class ProductCreate(CreateView):
     model = Product
     fields = ['name', 'description', 'price','category_type','img','quant_sell']
     def form_valid(self, form):
-    # Assign the logged in user (self.request.user)
         form.instance.user = self.request.user
-    # form.instance is the cat
-    # Let the CreateView do its job as usual
         return super().form_valid(form)
     success_url = '/profile/'
 
@@ -84,7 +80,6 @@ class OrderUpdate(UpdateView):
     model = Order
     fields = ['available', 'trading_price']
     success_url = '/profile/'
-
 
 class ProductUpdate(UpdateView):
     model = Product
@@ -105,10 +100,7 @@ class ProfileCreate(CreateView):
     model = Profile
     fields = ['first_name', 'last_name', 'email','description','img']
     def form_valid(self, form):
-    # Assign the logged in user (self.request.user)
         form.instance.user = self.request.user
-    # form.instance is the cat
-    # Let the CreateView do its job as usual
         return super().form_valid(form)
     success_url = '/profile/'
 
@@ -119,7 +111,6 @@ class ProfileUpdate(UpdateView):
 
 def checkout(request):
     for item in Cart(request).__dict__['cart'].items():
-
         order=Order.objects.create(
             product=Product.objects.get(id=item[1]['product_id']),
             quant_ordered = item[1]['quantity'],
@@ -128,7 +119,6 @@ def checkout(request):
             user=request.user
         )
         Order.save(order)
-
     return redirect("home")
 
 

@@ -1,103 +1,96 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>E Commerce</title>
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'css/style.css' %}"
-    />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/jquery.mixitup/latest/jquery.mixitup.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  </head>
 
-  <body>
-    <header class="navbar-fixed">
-      <nav>
-        <div class="nav-wrapper">
-          <ul>
-            <li>
-              <a href="/" class="left brand-logo">&nbsp;&nbsp;Metazon</a>
-            </li>
-          </ul>
-          <ul class="right">
-            {% if user.is_authenticated %}
-            <li><a href="{% url 'logout' %}">Logout</a></li>
-            <li><a href="/">Home</a></li>
-            <li><a href="/about/">About</a></li>
-            <li><a href="/cart/">Cart</a></li>
-            <li><a href="/profile/{{currentUser.id}}">Profile</a></li>
-            {% else %}
-            <li><a href="/">Home</a></li>
-            <li><a href="/about/">About</a></li>
-            <li><a href="{% url 'login' %}">Login</a></li>
-            {% endif %}
-          </ul>
-        </div>
-      </nav>
-    </header>
-    <main class="container">{% block content %} {% endblock %}</main>
-    <footer class="page-footer">
-      <div class="right">All Rights Reserved, &copy; 2022 Metazon &nbsp;</div>
-    </footer>
-  </body>
-  <script>
-    $(document).ready(function () {
-      $(".dropdown-trigger").dropdown();
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>E Commerce</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/jquery.mixitup/latest/jquery.mixitup.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+
+<body>
+  <header class="navbar-fixed">
+    <nav>
+      <div class="nav-wrapper">
+        <ul>
+          <li>
+            <a href="/" class="left brand-logo">&nbsp;&nbsp;Metazon</a>
+          </li>
+        </ul>
+        <ul class="right">
+          {% if user.is_authenticated %}
+
+          <li><a href="/">Home</a></li>
+          <!-- <li><a href="/about/">About</a></li> -->
+          <li><a href="/cart/">Cart</a></li>
+          <li><a href="/profile/{{currentUser.id}}">Profile</a></li>
+          <li><a href="{% url 'logout' %}">Logout</a></li>
+          {% else %}
+          <li><a href="/">Home</a></li>
+          <!-- <li><a href="/about/">About</a></li> -->
+          <li><a href="{% url 'login' %}">Login</a></li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <main class="container">{% block content %} {% endblock %}</main>
+  <footer class="page-footer">
+    <div class="right">All Rights Reserved, &copy; 2022 Metazon &nbsp;</div>
+  </footer>
+</body>
+<script>
+  $(document).ready(function() {
+    $(".dropdown-trigger").dropdown();
+  });
+  // MATERIALIZE FRAMEWORK - https://materializecss.com
+  $(document).ready(function() {
+    //FORM SELECT
+    $("select").formSelect(); // https://materializecss.com/select.html
+    // MODAL
+    $(".modal").modal();
+    // TABS
+    $("ul.tabs").tabs();
+    // SCROLLSPY
+    $(".scrollspy").scrollSpy();
+  });
+
+  // LazySizes
+  window.lazySizesConfig = window.lazySizesConfig || {};
+  window.lazySizesConfig.expand;
+
+  // MixItUp 3
+  $(function() {
+    $("#Container").mixItUp({
+      load: {
+        // filter: 'all'
+        filter: "all",
+      },
+      controls: {
+        toggleFilterButtons: false,
+      },
     });
-    // MATERIALIZE FRAMEWORK - https://materializecss.com
-    $(document).ready(function () {
-      //FORM SELECT
-      $("select").formSelect(); // https://materializecss.com/select.html
-      // MODAL
-      $(".modal").modal();
-      // TABS
-      $("ul.tabs").tabs();
-      // SCROLLSPY
-      $(".scrollspy").scrollSpy();
+  });
+
+  // DROPDOWN SELECT
+  $(function() {
+    var $filterSelect = $("#FilterSelect"),
+      // $sortSelect = $('#SortSelect'),
+      $container = $("#Container");
+
+    $container.mixItUp();
+
+    $filterSelect.on("change", function() {
+      $container.mixItUp("filter", this.value);
     });
+  });
+</script>
 
-    // LazySizes
-    window.lazySizesConfig = window.lazySizesConfig || {};
-    window.lazySizesConfig.expand;
-
-    // MixItUp 3
-    $(function () {
-      $("#Container").mixItUp({
-        load: {
-          // filter: 'all'
-          filter: "all",
-        },
-        controls: {
-          toggleFilterButtons: false,
-        },
-      });
-    });
-
-    // DROPDOWN SELECT
-    $(function () {
-      var $filterSelect = $("#FilterSelect"),
-        // $sortSelect = $('#SortSelect'),
-        $container = $("#Container");
-
-      $container.mixItUp();
-
-      $filterSelect.on("change", function () {
-        $container.mixItUp("filter", this.value);
-      });
-    });
-  </script>
 </html>

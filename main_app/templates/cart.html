@@ -1,11 +1,36 @@
-{% extends 'base.html' %} {% block content %}
-
-<h1>Cart</h1>
-{% load cart_tag %} Total Length: {{request.session.cart|length}}<br />
-{% for key,value in request.session.cart.items %} {{value.name}}
-${{value.price}} Quantity:{{value.quantity}}<img
-  style="width: 100px"
-  src="{{value.img}}"
-/>
-Total {{value.price|multiply:value.quantity }}<br />
-{% endfor %} {%endblock %}
+{% extends 'base.html' %} {% block content %}{% load cart_tag %}
+<main>
+  <div class="“container”">
+    <div class="“table-responsive" text-nowrap”>
+      <h1>Your Cart</h1>
+      <div>Total Item: {{request.session.cart|length}}</div>
+      <table class="“table”">
+        <thead>
+          <tr>
+            <th scope="“col”">Order name</th>
+            <th scope="“col”">Price</th>
+            <th scope="“col”">Quantity</th>
+            <th scope="“col”">Picture</th>
+            <th scope="“col”">Total Item Price</th>
+          </tr>
+        </thead>
+        <form action="/checkout/" method="POST" enctype="multipart/form-data">
+          {% for key,value in request.session.cart.items %}
+          <tbody>
+            <tr>
+              {% csrf_token %}
+              <td>{{value.name}}</td>
+              <td>${{value.price}}</td>
+              <td>{{value.quantity}}</td>
+              <td><img style="width: 100px" 100px” src="{{value.img}}" /></td>
+              <td>{{ value.price|multiply:value.quantity }}</td>
+            </tr>
+          </tbody>
+          {% endfor %}
+          <button type="submit">Checkout</button>
+        </form>
+      </table>
+    </div>
+  </div>
+</main>
+{% endblock %}

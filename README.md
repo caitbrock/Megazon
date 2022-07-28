@@ -1,15 +1,21 @@
-# Project-Three
+# Metazon
 
-The work I have done:
+Metazon is an ecommerce application that sells digital products. It is essentially Amazon for the Metaverse. 
 
-1.Created database ecomcollect.(have not created ant tables or etc)
-2.Created login page(but user is not able to get in yet :)))))   ). But while user is not able to login it directs to automaticaly to dashboard page
-3.Created admin user , password, email: Please find them below:
+The app allows a user to login to the website and access their profile where their list of products for sale are shown. The profile page includes seller information as well as the collection of items they have purchased previously. The home page of the app illustrates a wide array of products, which are filterable by category type. By clicking a product, users will see more detailed information and can add the product to their cart. When a user is ready to make a purchase, they can click the c
 
-4.Resert password
-5.register user
-6.login and log out 
+TECHNOLOGIES USED:
 
-  username:  testuser
-  email: test@test.com
-  password: testadmin
+- HTML
+- CSS
+- QGIS
+
+GETTING STARTED:
+
+Take a look at: https://metazon.herokuapp.com/
+
+NEXT STEPS:
+
+Moving forward it would be great to:
+
+1.

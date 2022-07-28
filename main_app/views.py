@@ -1,3 +1,5 @@
+from django.http import HttpResponseRedirect
+from itertools import product
 from urllib import request
 from django.shortcuts import redirect, render
 from .models import Product, Profile, Order
@@ -18,12 +20,19 @@ from cart.cart import Cart
 
 def home(request):
     products = Product.objects.all()
-    return render (request, 'home.html', {'products': products})
+    try:
+        currentUser = Profile.objects.get(user=request.user)
+        return render (request, 'home.html', {'products': products,'currentUser':currentUser})
+    except:
+        return render (request, 'home.html', {'products': products})
 
 def products_detail(request,product_id):
   product = Product.objects.get(id=product_id)
+  currentUser = request.user
+  print(product.user)
   return render (request, 'products/detail.html', {
     'product': product,
+    'currentUser':currentUser
   })
 def about(request):
     return render(request, 'about.html')
@@ -43,37 +52,55 @@ def register(request):
    return redirect(reverse("profile_create"))
 
 def cart(request):
-
     return render(request, 'cart.html')
 
-def profile(request):
-    if(Profile.objects.get(user=request.user)):
-        profile = Profile.objects.get(user=request.user)
-        products = Product.objects.filter(user=request.user)
-        return render(request, 'profile.html',{'products': products,'profile':profile})
-    else:
-        return redirect("profile_create")
+def profile(request,profile_id):
+    try:
+        profile = Profile.objects.get(id=profile_id)
+        products = Product.objects.filter(user=profile.user)
+        orders=Order.objects.filter(user=profile.user)
+        currentUser = request.user
+        return render(request, 'profile.html',{'products': products,'profile':profile,'collections':orders,'currentUser':currentUser})
+    except:
+        profile = Profile.objects.get(id=profile_id)
+        products = Product.objects.filter(user=profile.user)
+        orders=Order.objects.filter(user=profile.user)
+        return render(request, 'profile.html',{'products': products,'profile':profile,'collections':orders})
 
 class ProductCreate(CreateView):
 
     model = Product
     fields = ['name', 'description', 'price','category_type','img','quant_sell']
     def form_valid(self, form):
-    # Assign the logged in user (self.request.user)
         form.instance.user = self.request.user
-    # form.instance is the cat
-    # Let the CreateView do its job as usual
         return super().form_valid(form)
-    success_url = '/profile/'
+    
+    def get_success_url(self):
+        id = self.request.user.profile.id
+        return f'/profile/{id}'
+
+class OrderUpdate(UpdateView):
+    model = Order
+    fields = ['available', 'trading_price']
+    
+    def get_success_url(self):
+        id = self.request.user.profile.id
+        return f'/profile/{id}'
 
 class ProductUpdate(UpdateView):
     model = Product
     fields = ['name', 'description', 'price']
-    success_url = '/profile/'
+    
+    def get_success_url(self):  
+        id = self.request.user.profile.id
+        return f'/profile/{id}'
 
 class ProductDelete(DeleteView):
     model = Product
-    success_url = '/'
+    
+    def get_success_url(self):
+        id = self.request.user.profile.id
+        return f'/profile/{id}'
 
 class ProductDetailView(DetailView):
     model = Product
@@ -85,18 +112,32 @@ class ProfileCreate(CreateView):
     model = Profile
     fields = ['first_name', 'last_name', 'email','description','img']
     def form_valid(self, form):
-    # Assign the logged in user (self.request.user)
         form.instance.user = self.request.user
-    # form.instance is the cat
-    # Let the CreateView do its job as usual
         return super().form_valid(form)
-    success_url = '/profile/'
+    
+    def get_success_url(self):  
+        id = self.request.user.profile.id
+        return f'/profile/{id}'
 
 class ProfileUpdate(UpdateView):
     model = Profile
     fields = ['first_name', 'last_name', 'email','description','img']
-    success_url = '/profile/'
+    
+    def get_success_url(self):  
+        id = self.request.user.profile.id
+        return f'/profile/{id}'
 
+def checkout(request):
+    for item in Cart(request).__dict__['cart'].items():
+        order=Order.objects.create(
+            product=Product.objects.get(id=item[1]['product_id']),
+            quant_ordered = item[1]['quantity'],
+            available = False,
+            trading_price = 0,
+            user=request.user
+        )
+        Order.save(order)
+    return redirect("home")
 
 
 @login_required(login_url="/users/login")

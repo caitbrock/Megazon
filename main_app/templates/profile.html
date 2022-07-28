@@ -1,28 +1,99 @@
 {% extends 'base.html' %} {% block content %}
 
-<h1>Profile</h1>
-<div class="card">
-  <p>{{ profile.first_name }}</p>
-  <p><img style="width: 100px" src="/{{ profile.img }}" /></p>
-  <p>{{ profile.description }}</p>
-  <p>Followers 500</p>
-  <p>following 2</p>
-  <a href="{% url 'profile_update' profile.id %}">Edit Profile</a>
-</div>
-<h1>My Products</h1>
-{% for product in products %}
-<div class="card">
-  <a href="{% url 'detail' product.id %}">
-    <div class="card-content">
-      <span class="card-title">{{ product.name }}</span>
-      <p>description: {{ product.description }}</p>
-      <p>price: {{ product.price }}</p>
+<h3>Profile</h3>
+<div class="card" id="profile-card">
+  <div class="profile-content">
+    <img style="width: 200px" src="/{{ profile.img }}" /></p>
+    <h5>
+      {{ profile.first_name }}
+      {{ profile.last_name }}
+    </h5>
+    {{ profile.description }}</br></br>
+    <div class='status'>
+      <div class='followers'>Followers: 500</div>
+      <div class='following'>Following: 2</div>
     </div>
-  </a>
+  </div>
+  <div class="profile-button">
+    <button class="waves-effect waves-light btn" type="edit"><a href="{% url 'profile_update' profile.id %}" style="color:#ffffff;">
+        <i class="small material-icons">edit</i></a>
+    </button>
+  </div>
 </div>
-{% endfor %}
-<li>
-  <a href="{% url 'products_create' %}"><button>Add Product</button></a>
-</li>
-<h1>Collections</h1>
+
+
+
+
+<h4>My Products</h4>
+<div class="card" id="profile-card">
+  {% for product in products %}
+  <div class="gallery col s3 m3 l3">
+    <div class="card" style="width: 25vw">
+      <div class="card-content">
+        <a href="{% url 'detail' product.id %}">
+          <img style="height: 200px" src="/{{ product.img }}">
+          <span class="card-title">
+            {{ product.name }}</span>
+          <p>
+            {{ product.description }}
+          </p>
+      </div>
+
+      <div class="product-buttons">
+        {% if user.is_authenticated%} {% if currentUser == profile.user%}
+        <div class="button-edit">
+          <button class="waves-effect waves-light btn" type="edit"><a href="{% url 'products_update' product.id %}" style="color:#ffffff;">
+              <i class="small material-icons">edit</i></a>
+          </button>
+        </div>
+        <div class="button-delete">
+          <form action="{% url 'products_delete' product.id %}" method="POST">
+            {%csrf_token%} <button class="waves-effect waves-light btn" type="submit"><a href="{% url 'products_delete' product.id %}" style="color:#ffffff;">
+                <i class="small material-icons">delete</i></a>
+            </button>
+          </form>
+        </div>
+        {% endif %} {% endif %}
+      </div>
+
+    </div>
+  </div>
+  {% endfor %}
+  <div class="profile-button">
+    <button class="waves-effect waves-light btn" type="edit"><a href="{% url 'products_create' %}" style="color:#ffffff;">
+        <i class="small material-icons">add</i></a>
+    </button>
+  </div>
+</div>
+
+
+
+<h4>Collections</h4>
+<div class="card" id="profile-card">
+  {% for item in collections %}
+  <div class="gallery col s3 m3 l3">
+    <div class="card">
+      <a href="{% url 'detail'  item.product.id  %}">
+        <div class="card-content">
+          <span class="card-title">
+            {{ item.product.name }}</span>
+          <p><img style="width: 100px" src="/{{ item.product.img }}" /></p>
+          <p>
+            {%if item.available%}Available for Trading
+            <br />price: ${{item.trading_price }}{%else%}Not Available{%endif%}
+          </p>
+          {% if user.is_authenticated%} {% if currentUser == profile.user%}
+          <a href="{% url 'orders_update' item.id %}"><button class="waves-effect waves-light btn">
+              Edit Availability
+            </button></a>{%else%} {%if item.available%}
+          <a href="{% url 'orders_update' item.id %}"><button class="waves-effect waves-light btn">
+              Request For Trading
+            </button></a>{%endif%} {% endif %}{% endif %}
+        </div>
+      </a>
+    </div>
+
+  </div>
+  {% endfor %}
+</div>
 {% endblock %}

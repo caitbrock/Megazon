@@ -50,6 +50,11 @@
   $(document).ready(function() {
     $(".dropdown-trigger").dropdown();
   });
+
+  $(document).ready(function() {
+    $('select').formSelect();
+  });
+
   // MATERIALIZE FRAMEWORK - https://materializecss.com
   $(document).ready(function() {
     //FORM SELECT
@@ -92,7 +97,7 @@
     });
   });
 
-  $(“a.remove”).click(function() {
+  $('a.remove').click(function() {
     event.preventDefault();
     $(this).parent().parent().parent().hide(400);
   });

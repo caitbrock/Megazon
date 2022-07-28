@@ -255,6 +255,10 @@ span {
   padding: 20px;
 }
 
+.cart {
+  padding: 20px;
+}
+
 .product-buttons {
   display: flex;
   flex-direction: row;

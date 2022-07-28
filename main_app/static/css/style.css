@@ -284,3 +284,37 @@ input[type="submit"] {
 a {
   color: #0e5b53;
 }
+
+a.remove {
+  text-decoration: none;
+  color: #E2DFDF;
+  font-weight: bold;
+  background: #AEACAC;
+  padding: 0.5em;
+  font-size: 0.75em;
+  display: inline-block;
+  border-radius: 100%;
+  line-height: 0.85;
+}
+a.plus {
+  text-decoration: none;
+  color: #E2DFDF;
+  font-weight: bold;
+  background: #AEACAC;
+  padding: 0.5em;
+  font-size: 0.75em;
+  display: inline-block;
+  border-radius: 100%;
+  line-height: 0.85;
+}
+a.minus {
+  text-decoration: none;
+  color: #E2DFDF;
+  font-weight: bold;
+  background: #AEACAC;
+  padding: 0.5em;
+  font-size: 0.75em;
+  display: inline-block;
+  border-radius: 100%;
+  line-height: 0.85;
+}

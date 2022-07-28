@@ -6,6 +6,8 @@ The app allows a user to login to the website and access their profile where the
 
 TECHNOLOGIES USED:
 
+- Django
+- PSQL
 - HTML
 - CSS
 - QGIS

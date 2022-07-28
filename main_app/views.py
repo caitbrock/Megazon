@@ -25,10 +25,14 @@ def home(request):
         return render (request, 'home.html', {'products': products,'currentUser':currentUser})
     except:
         return render (request, 'home.html', {'products': products})
+
 def products_detail(request,product_id):
   product = Product.objects.get(id=product_id)
+  currentUser = request.user
+  print(product.user)
   return render (request, 'products/detail.html', {
     'product': product,
+    'currentUser':currentUser
   })
 def about(request):
     return render(request, 'about.html')

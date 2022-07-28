@@ -74,21 +74,33 @@ class ProductCreate(CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
-    success_url = '/profile/'
+    
+    def get_success_url(self):
+        id = self.request.user.profile.id
+        return f'/profile/{id}'
 
 class OrderUpdate(UpdateView):
     model = Order
     fields = ['available', 'trading_price']
-    success_url = '/profile/'
+    
+    def get_success_url(self):
+        id = self.request.user.profile.id
+        return f'/profile/{id}'
 
 class ProductUpdate(UpdateView):
     model = Product
     fields = ['name', 'description', 'price']
-    success_url = '/profile/'
+    
+    def get_success_url(self):  
+        id = self.request.user.profile.id
+        return f'/profile/{id}'
 
 class ProductDelete(DeleteView):
     model = Product
-    success_url = '/profile/'
+    
+    def get_success_url(self):
+        id = self.request.user.profile.id
+        return f'/profile/{id}'
 
 class ProductDetailView(DetailView):
     model = Product
@@ -102,12 +114,18 @@ class ProfileCreate(CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
-    success_url = '/profile/'
+    
+    def get_success_url(self):  
+        id = self.request.user.profile.id
+        return f'/profile/{id}'
 
 class ProfileUpdate(UpdateView):
     model = Profile
     fields = ['first_name', 'last_name', 'email','description','img']
-    success_url = '/profile/'
+    
+    def get_success_url(self):  
+        id = self.request.user.profile.id
+        return f'/profile/{id}'
 
 def checkout(request):
     for item in Cart(request).__dict__['cart'].items():

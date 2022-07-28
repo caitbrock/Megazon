@@ -51,14 +51,17 @@ def cart(request):
     return render(request, 'cart.html')
 
 def profile(request,profile_id):
-    if(Profile.objects.get(user=request.user)):
+    try:
         profile = Profile.objects.get(id=profile_id)
         products = Product.objects.filter(user=profile.user)
         orders=Order.objects.filter(user=profile.user)
         currentUser = request.user
         return render(request, 'profile.html',{'products': products,'profile':profile,'collections':orders,'currentUser':currentUser})
-    else:
-        return redirect("profile_create")
+    except:
+        profile = Profile.objects.get(id=profile_id)
+        products = Product.objects.filter(user=profile.user)
+        orders=Order.objects.filter(user=profile.user)
+        return render(request, 'profile.html',{'products': products,'profile':profile,'collections':orders})
 
 class ProductCreate(CreateView):
 

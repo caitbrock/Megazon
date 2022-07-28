@@ -35,7 +35,7 @@
         available for trading: {%if item.available%}YES
         <br />price: ${{item.trading_price }}{%else%}NO{%endif%}
       </p>
-      {% if currentUser == profile.user%}
+      {% if user.is_authenticated%} {% if currentUser == profile.user%}
       <a href="{% url 'orders_update' item.id %}"
         ><button class="waves-effect waves-light btn">
           Edit Availability
@@ -45,7 +45,7 @@
         ><button class="waves-effect waves-light btn">
           Request For Trading
         </button></a
-      >{%endif%} {% endif %}
+      >{%endif%} {% endif %}{% endif %}
     </div>
   </a>
 </div>

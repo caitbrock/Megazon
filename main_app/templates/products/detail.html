@@ -1,41 +1,66 @@
 {% extends 'base.html' %} {% block content %}
-<div class="row">
-  <div class="col s6">
-    <div class="card">
-      <img style="width:200px;"src="/{{product.img}}">
-      <!-- add this single line below -->
 
-        <div class="card-content">
-          <span class="card-title">
-            {{ product.name }}</span>
-            <p>seller:<a href="/profile/{{product.user.id}}">{{ product.user }}</a></p>
-          <p>Description:
-            {{ product.description }}
-          </p>
-          <p>Price:
-            {{ product.price }}
-          </p>
-          <a href=""> <button>Add To Cart</button></a>
-          </p>
+<div class="product-detail">
+  <h3>
+    {{ product.name }}
+  </h3>
+  <img style="width:400px;" src="/{{product.img}}">
+  <!-- add this single line below -->
+
+  <div class="card-content">
+
+    <p>
+      {{ product.description }}
+    </p>
+    <p>
+      {{ product.category_type }}
+    </p>
+    <p>Price:
+      {{ product.price }}
+    </p>
+    <p>Quantity Avaliable:
+      {{ product.quant_sell }}
+    </p>
+    <p>seller:
+      <a href="/profile/{{product.user.id}}">{{ product.user }}</a>
+    </p>
+    </br>
+{% if user.is_authenticated%}
+         {% if currentUser == product.user%}
+    <div class="action">
+
+      <div class="counter">
+        <div class="minus">
+          <button id="minus">
+            <h6>-</h6>
+          </button>
         </div>
 
-        <!-- and this following one as well -->
-        <div class="card-action">
-          {% if user.is_authenticated%}
-         {% if currentUser == product.user%}
-          <a href="{% url 'products_update' product.id %}">Edit</a>{% endif %}
-          <form action="{% url 'products_delete' product.id %}" method="POST">
-            {%csrf_token%} <button type="submit">Delete</button>
-          </form>
-<a href="{% url 'cart_add' product.id %}">Add To Cart</a>
-<a href="{% url 'cart_clear' %}">Clear Cart</a>
-<a href="{% url 'item_increment' product.id %}">Increament</a>
-<a href="{% url 'item_decrement' product.id %}">Decrement</a>
+        <div class="number-entry" value="1">
+          <p>0</p>
+        </div>
+
+        <div class="plus">
+          <button id="plus">
+            <h6>+</h6>
+          </button>
+        </div>
+        </br>
+        </br>
+      </div>
+
+      <div class="button">
+        <button class="waves-effect waves-light btn" type="Add to Cart"><a href="{% url 'cart_add' product.id %}" style="color:#ffffff;">
+            <i class="small material-icons">add_shopping_cart</i></a>
+        </button>
+        {% endif %}
 {%else%}<p>Please Login or Register First</p>   
 {% endif %}
-
-</div>
- 
+      </div>
+    </div>
   </div>
-</div>
-{% endblock %}
+  </br>
+  </br>
+
+
+  {% endblock %}

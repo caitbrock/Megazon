@@ -52,6 +52,7 @@ def register(request):
    return redirect(reverse("profile_create"))
 
 def cart(request):
+
     return render(request, 'cart.html')
 
 def profile(request,profile_id):
@@ -92,7 +93,7 @@ class ProductUpdate(UpdateView):
 
 class ProductDelete(DeleteView):
     model = Product
-    success_url = '/'
+    success_url = '/profile/'
 
 class ProductDetailView(DetailView):
     model = Product

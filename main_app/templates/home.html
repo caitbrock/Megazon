@@ -2,159 +2,67 @@
 
 <div class="hero-image">
   <div class="hero-text">
-    <h1>Metamazon</h1>
-    <h6>Meeting your virtual needs</h6>
+    <h1>Metazon</h1>
+    <h5>Meeting your virtual needs</h5>
   </div>
 </div>
 
-<div class="filters">
-  <div class="filter-type">
-    <a class="dropdown-trigger material-icons prefix" href="#" data-target="dropdown2">filter_list</a>
-    <ul id="dropdown2" class="dropdown-content">
-      <li><a href="#!">All</a></li>
-      <li><a href="#!">Digital Art</a></li>
-      <li><a href="#!">Course</a></li>
-      <li><a href="#!">Music</a></li>
-      <li><a href="#!">Service</a></li>
-    </ul>
-  </div>
-
-
-  <div class="filter-cost">
-    <label>Sort by Price:</label>
-    <button class="sort btn btn-floating waves-effect light-grey text-darken-1" data-sort="price:asc">
-      <i class="small material-icons">arrow_upward</i>
-    </button>
-    <button class="sort btn btn-floating waves-effect light-grey text-darken-1" data-sort="price:desc">
-      <i class="small material-icons">arrow_downward</i>
-    </button>
-  </div>
-</div>
-
-
-<div class="product-display">
-  {% for product in products %}
-  <div class="card">
-    <div class="card-content">
-      <a href="{% url 'detail' product.id %}">
-        <img style="height: 400px" src="/{{ product.img }}" />
-        <span class="card-title">
-          {{ product.name }}</span>
-      </a>
-      <p>
-        {{ product.description }}
-      </p>
-      <p>price:
-        {{ product.price }}
-      </p>
-      </br>
-      <button class="waves-effect waves-light btn" type="Add to Cart">
-        <i class="small material-icons">add_shopping_cart</i>
-      </button>
-    </div>
-  </div>
-  {% endfor %}
-</div>
-	
-		
-		
 <!-- 	SORTING BUTTON'S ROW	 -->
 <div id="sorting-row" class="row">
-	<div class="controls">
-		
-		<div class="col s12">
-			<div class="input-field col s2 m6 hide-on-large-only">
-				<a class="modal-trigger btn btn-floating waves-effect btn-flat grey-text text-darken-1" href="#modal1">
-					<i class="material-icons">info</i>
-				</a>
-			</div>
-		
-		
-			<!-- MATERIALIZE'S DROPDOWN SELECT FOR DESKTOP USERS -->
-			<div class="input-field col s12 m6 hide-on-med-and-down">
-				<div class="select-wrapper">
-					<i class="material-icons prefix">filter_list</i>
-					<select id="FilterSelect">
-						<option class="filter" selected disabled>Filter Category</option>
-						<option class="filter" value="all" data-filter="all" selected>All</option>
-						<option class="filter" value=".category-graphics">Graphics</option>
-						<option class="filter" value=".category-code">Code</option>
-						<option class="filter" value=".category-versions">Version control</option>
-						<option class="filter" value=".category-publishing">Publishing</option>
-						<option class="filter" value=".category-prototyping">Prototyping</option>
-						<option class="filter" value=".category-servers">Servers</option>
-					</select>
-				</div>
-			</div>
-		
-			<div class="input-field col s10 m6">
-				<span class="right">
-					<label>Sort:</label>
-					<button class="sort btn btn-floating waves-effect btn-flat grey-text text-darken-1" data-sort="name:asc">A-Z</button>
-					<button class="sort btn btn-floating waves-effect btn-flat grey-text text-darken-1" data-sort="name:desc">Z-A</button>
-					<button class="sort btn btn-floating waves-effect btn-flat grey-text text-darken-1" data-sort="myorder:asc"><i class="material-icons">arrow_upward</i></button>
-					<button class="sort btn btn-floating waves-effect btn-flat grey-text text-darken-1" data-sort="myorder:desc"><i class="material-icons">arrow_downward</i></button>	
-				</span>
-			</div>
-		
-		
-	</div>
+  <div class="input-field col s12 m12 l7">
+    <div class="select-wrapper">
+      <i class="material-icons prefix">filter_list</i>
+      <select id="FilterSelect">
+        <option class="filter" selected disabled>Filter Category</option>
+        <option class="filter" value="all" data-filter="all" selected>All</option>
+        <option class="filter" value=".category-D">Digital Art</option>
+        <option class="filter" value=".category-C">Course</option>
+        <option class="filter" value=".category-S">Service</option>
+        <option class="filter" value=".category-M">Music</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="input-field col m12 l5 hide-on-small-only">
+    <span class="right">
+      <label>Sort Name:</label>
+      <button class="sort btn btn-floating waves-effect white-text text-darken-1" data-sort="name:asc">A-Z</button>
+      <button class="sort btn btn-floating waves-effect white-text text-darken-1" data-sort="name:desc">Z-A</button>
+
+      <label>Sort Price:</label>
+      <button class="sort btn btn-floating waves-effect grey-text text-darken-1" data-sort="price:asc"><i class="material-icons">arrow_upward</i></button>
+      <button class="sort btn btn-floating waves-effect grey-text text-darken-1" data-sort="price:desc"><i class="material-icons">arrow_downward</i></button>
+    </span>
+  </div>
 </div>
 
 
+{% for product in products %}
 <div class="row">
-	<div id="Container" class="project-cards-container">
-    {% for product in products %}
-		<div class="col s6 m3 mix category-code" data-myorder="12" data-name="Atom">
-			<div class="card">
-				<div class="card-image">
-					<img data-src="https://jay.holtslander.ca/wp-content/uploads/2015/03/atom.jpg" class="lazyload responsive-img" ondragstart="return false;">
-				</div>
-				<div class="card-content">{{ product.name }}</div>
-			</div>
-		</div>
-	  {% endfor %}
+  <div id="Container" class="project-cards-container">
+    <div class="col s12 m6 l4 mix category-{{product.category_type}}" price="{{product.price}}" data-name="{{product.name}}">
+      <div class="card">
+        <div class="card-content">
+          <a href="{% url 'detail' product.id %}">
+            <img style="height: 400px" src="/{{ product.img }}" class="lazyload responsive-img" ondragstart="return false;">
+            <span class="card-title">
+              {{ product.name }}</span>
+            <p>
+              {{ product.description }}
+            </p>
+            <p>price:
+              {{ product.price }}
+            </p>
 
+            </br>
+            <button class="waves-effect waves-light btn" type="Add to Cart">
+              <i class="small material-icons">add_shopping_cart</i>
+            </button>
+        </div>
+      </div>
 
+    </div>
+    {% endfor %}
+  </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-	</div>
-</div>
-
-
-
-
-
-<!-- Modal Structure -->
-<div id="modal1" class="modal">
-	<div class="modal-content">
-		<h4>Pen details</h4>
-		<p>This pen demonstrates the addition of <a href="https://www.kunkalabs.com/mixitup/" target="_blank">MixItUp 3</a> (for filtering items), and <a href="https://github.com/aFarkas/lazysizes" target="_blank">lazySizes</a> (for lazy loading) to <a href="http://materializecss.com/" target="_blank">the Materialize framework</a>. It's part of a collection of cool Materialize related pens that you can find <a href="https://codepen.io/collection/nbBqgY">here</a>.</p>
-		<ul>
-			<li><strong>lazySizes:</strong> <a href="https://afarkas.github.io/lazysizes/" target="_blank">Demo</a></li>
-			<li><strong>MixItUp 3:</strong> <a href="https://www.kunkalabs.com/mixitup/" target="_blank">Demo</a></li>
-		</ul>
-		<p>Inspired by <a href="https://codepen.io/patrickkunka/pen/gvHdi" target="_blank">this pen</a></p>
-	</div>
-	<div class="modal-footer">
-		<a href="#!" class="modal-close waves-effect btn-flat">Ok</a>
-	</div>
-</div>
-
-
-
-
-
-
-{% endblock %}
+  {% endblock %}

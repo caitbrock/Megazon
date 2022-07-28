@@ -259,6 +259,10 @@ span {
   padding: 20px;
 }
 
+.product-form {
+  padding: 20px;
+}
+
 .product-buttons {
   display: flex;
   flex-direction: row;

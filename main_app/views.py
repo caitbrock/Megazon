@@ -26,7 +26,7 @@ def home(request):
 def products_detail(request,product_id):
   product = Product.objects.get(id=product_id)
 
-  currentUser = request.user
+  currentUser = Profile.objects.get(user=request.user)
   sellerProfile = Profile.objects.get(user=product.user)
   
   return render (request, 'products/detail.html', {
@@ -34,6 +34,7 @@ def products_detail(request,product_id):
     'currentUser':currentUser,
     'seller':sellerProfile
   })
+
 def about(request):
     return render(request, 'about.html')
 
@@ -64,16 +65,15 @@ def profile(request,profile_id):
         profile = Profile.objects.get(id=profile_id)
         products = Product.objects.filter(user=profile.user)
         orders=Order.objects.filter(user=profile.user)
-        currentUser = request.user
+        currentUser = Profile.objects.get(user=request.user)
+        print(currentUser.id)
         return render(request, 'profile.html',{'products': products,'profile':profile,'collections':orders,'currentUser':currentUser})
     except:
+        print("wrong")
         profile = Profile.objects.get(id=profile_id)
         products = Product.objects.filter(user=profile.user)
         orders=Order.objects.filter(user=profile.user)
         return render(request, 'profile.html',{'products': products,'profile':profile,'collections':orders})
-
-
-
 
 class ProductCreate(CreateView):
 

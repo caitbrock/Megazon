@@ -21,11 +21,10 @@
 
 
 <h4>My Products</h4>
-
 <div class="card" id="profile-card">
   {% for product in products %}
   <div class="gallery col s3 m3 l3">
-    <div class="card">
+    <div class="card" style="width: 25vw">
       <div class="card-content">
         <a href="{% url 'detail' product.id %}">
           <img style="height: 200px" src="/{{ product.image }}">
@@ -39,19 +38,10 @@
       <div class="product-buttons">
         {% if user.is_authenticated%} {% if currentUser == profile.user%}
         <div class="button-edit">
-
-
           <button class="waves-effect waves-light btn" type="edit"><a href="{% url 'products_update' product.id %}" style="color:#ffffff;">
-              
-            
-            
-            <i class="small material-icons">edit</i></a>
-          
-          
-          
+              <i class="small material-icons">edit</i></a>
           </button>
         </div>
-
         <div class="button-delete">
           <form action="{% url 'products_delete' product.id %}" method="POST">
             {%csrf_token%} <button class="waves-effect waves-light btn" type="submit"><a href="{% url 'products_delete' product.id %}" style="color:#ffffff;">
@@ -59,46 +49,49 @@
             </button>
           </form>
         </div>
-        {%endif%} {% endif %}
+        {% endif %} {% endif %}
       </div>
 
     </div>
   </div>
   {% endfor %}
   <div class="profile-button">
+    {% if currentUser == profile.user%}
     <button class="waves-effect waves-light btn" type="edit"><a href="{% url 'products_create' %}" style="color:#ffffff;">
         <i class="small material-icons">add</i></a>
     </button>
+    {% endif %}
   </div>
 </div>
 
 
 
-<h1>Collections</h1>
-{% for item in collections %}
-<div class="card">
-  <a href="{% url 'detail'  item.product.id  %}">
-    <div class="card-content">
-      <span class="card-title">{{ item.product.name }}</span>
-      <p><img style="width: 100px" src="/{{ item.product.image }}" /></p>
-      <p>
-        available for trading: {%if item.available%}YES
-        <br />price: ${{item.trading_price }}{%else%}NO{%endif%}
-      </p>
-      {% if user.is_authenticated%} {% if currentUser == profile.user%}
-      <a href="{% url 'orders_update' item.id %}"
-        ><button class="waves-effect waves-light btn">
-          Edit Availability
-        </button></a
-      >{%else%} {%if item.available%}
-      <a href="{% url 'orders_update' item.id %}"
-        ><button class="waves-effect waves-light btn">
-          Request For Trading
-        </button></a
-      >{%endif%} {% endif %}{% endif %}
+<h4>Collections</h4>
+<div class="card" id="profile-card">
+  {% for item in collections %}
+  <div class="gallery col s3 m3 l3">
+    <div class="card">
+      <a href="{% url 'detail'  item.product.id  %}">
+        <div class="card-content">
+          <span class="card-title">
+            {{ item.product.name }}</span>
+          <p><img style="width: 100px" src="/{{ item.product.image }}" /></p>
+          <p>
+            {%if item.available%}Available for Trading
+            <br />price: ${{item.trading_price }}{%else%}Not Available{%endif%}
+          </p>
+          {% if user.is_authenticated%} {% if currentUser == profile.user%}
+          <a href="{% url 'orders_update' item.id %}"><button class="waves-effect waves-light btn">
+              Edit Availability
+            </button></a>{%else%} {%if item.available%}
+          <a href=""><button class="waves-effect waves-light btn">
+              Request For Trading
+            </button></a>{%endif%} {% endif %}{% endif %}
+        </div>
+      </a>
     </div>
-  </a>
+
+  </div>
+  {% endfor %}
 </div>
-{% endfor %} {% endblock %}
-
-
+{% endblock %}

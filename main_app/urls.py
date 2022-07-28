@@ -4,12 +4,10 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
 from . import views
+
 urlpatterns = [
   path('', views.home, name='home'),
   path('about/', views.about, name='about'),
-
-#   path('cats/', views.cats_index, name='index'),
-#   path('cats/<int:cat_id>/',views.cats_detail,name='detail')
   path('accounts/', include("django.contrib.auth.urls")),
   path('register/', views.register, name ="register"),
   path('products/<int:product_id>/', views.products_detail, name='detail'),
@@ -20,7 +18,7 @@ urlpatterns = [
   path('products/<int:pk>/delete/', views.ProductDelete.as_view(), name='products_delete'),
   path('profile/create/', views.ProfileCreate.as_view(), name='profile_create'),
   path('profile/<int:pk>/update', views.ProfileUpdate.as_view(), name='profile_update'),
-path('cart/', views.cart, name='cart'),
+  path('cart/', views.cart, name='cart'),
   path('cart/add/<int:id>/', views.cart_add, name='cart_add'),
   path('cart/item_clear/<int:id>/', views.item_clear, name='item_clear'),
   path('cart/item_increment/<int:id>/',

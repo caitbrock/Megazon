@@ -41,7 +41,7 @@
 <div class="row">
   <div id="Container" class="project-cards-container">
     <div class="col s12 m6 l4 mix category-{{product.category_type}}" price="{{product.price}}" data-name="{{product.name}}">
-      <div class="card">
+      <div class="card" id="">
         <div class="card-content">
           <a href="{% url 'detail' product.id %}">
             <img style="height: 400px" src="/{{ product.image }}" class="lazyload responsive-img" ondragstart="return false;">
@@ -56,7 +56,7 @@
 
             </br>
            
-             <a href="{% url 'cart_add' product.id %}"> <button class="waves-effect waves-light btn" type="Add to Cart"><i class="small material-icons">add_shopping_cart</i></button></a>
+             <a href="{% url 'cart_add' product.id %}" style="color:#ffffff;"> <button class="waves-effect waves-light btn" type="Add to Cart"><i class="small material-icons">add_shopping_cart</i></button></a>
           
         </div>
       </div>

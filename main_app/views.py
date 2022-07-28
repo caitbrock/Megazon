@@ -73,11 +73,9 @@ class ProductCreate(CreateView):
     
     fields = ['name', 'description', 'price','category_type','image','quant_sell']
     def form_valid(self, form):
-    # Assign the logged in user (self.request.user)
         form.instance.user = self.request.user
-    # form.instance is the cat
-    # Let the CreateView do its job as usual
         return super().form_valid(form)
+    
     def get_success_url(self):
         id = self.request.user.profile.id
         return f'/profile/{id}'
@@ -116,12 +114,9 @@ class ProductListView(ListView):
 
 class ProfileCreate(CreateView):
     model = Profile
-    fields = ['first_name', 'last_name', 'email','description','image']
+    fields = ['first_name', 'last_name', 'email','description','img']
     def form_valid(self, form):
-    # Assign the logged in user (self.request.user)
         form.instance.user = self.request.user
-    # form.instance is the cat
-    # Let the CreateView do its job as usual
         return super().form_valid(form)
 
     def get_success_url(self):
@@ -137,7 +132,6 @@ class ProfileUpdate(UpdateView):
 
 def checkout(request):
     for item in Cart(request).__dict__['cart'].items():
-
         order=Order.objects.create(
             product=Product.objects.get(id=item[1]['product_id']),
             quant_ordered = item[1]['quantity'],

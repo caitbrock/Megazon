@@ -48,8 +48,8 @@ def register(request):
    return redirect(reverse("profile_create"))
 
 def cart(request):
-
-    return render(request, 'cart.html')
+    currentUser = request.user
+    return render(request, 'cart.html',{'currentUser':currentUser})
 
 def profile(request,profile_id):
     try:
@@ -64,18 +64,20 @@ def profile(request,profile_id):
         orders=Order.objects.filter(user=profile.user)
         return render(request, 'profile.html',{'products': products,'profile':profile,'collections':orders})
 
-def profileRedirect(request):
-    profile = Profile.objects.get(user=request.user)
-    products = Product.objects.filter(user=request.user)
-    orders=Order.objects.filter(user=request.user)
-    return render(request, 'profile.html',{'products': products,'profile':profile,'collections':orders})
+
 
 
 class ProductCreate(CreateView):
 
     model = Product
-    fields = ['name', 'description', 'price','category_type','img','quant_sell']
-
+    
+    fields = ['name', 'description', 'price','category_type','image','quant_sell']
+    def form_valid(self, form):
+    # Assign the logged in user (self.request.user)
+        form.instance.user = self.request.user
+    # form.instance is the cat
+    # Let the CreateView do its job as usual
+        return super().form_valid(form)
     def get_success_url(self):
         id = self.request.user.profile.id
         return f'/profile/{id}'
@@ -92,7 +94,7 @@ class OrderUpdate(UpdateView):
 
 class ProductUpdate(UpdateView):
     model = Product
-    fields = ['name', 'description', 'price']
+    fields = ['name', 'description', 'price','image']
     
     def get_success_url(self):
         id = self.request.user.profile.id
@@ -114,7 +116,7 @@ class ProductListView(ListView):
 
 class ProfileCreate(CreateView):
     model = Profile
-    fields = ['first_name', 'last_name', 'email','description','img']
+    fields = ['first_name', 'last_name', 'email','description','image']
     def form_valid(self, form):
     # Assign the logged in user (self.request.user)
         form.instance.user = self.request.user
@@ -128,7 +130,7 @@ class ProfileCreate(CreateView):
 
 class ProfileUpdate(UpdateView):
     model = Profile
-    fields = ['first_name', 'last_name', 'email','description','img']
+    fields = ['first_name', 'last_name', 'email','description','image']
     def get_success_url(self):
         id = self.request.user.profile.id
         return f'/profile/{id}'

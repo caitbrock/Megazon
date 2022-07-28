@@ -28,7 +28,7 @@
     <div class="card">
       <div class="card-content">
         <a href="{% url 'detail' product.id %}">
-          <img style="height: 200px" src="/{{ product.img }}">
+          <img style="height: 200px" src="/{{ product.image }}">
           <span class="card-title">
             {{ product.name }}</span>
           <p>
@@ -80,7 +80,7 @@
   <a href="{% url 'detail'  item.product.id  %}">
     <div class="card-content">
       <span class="card-title">{{ item.product.name }}</span>
-      <p><img style="width: 100px" src="/{{ item.product.img }}" /></p>
+      <p><img style="width: 100px" src="/{{ item.product.image }}" /></p>
       <p>
         available for trading: {%if item.available%}YES
         <br />price: ${{item.trading_price }}{%else%}NO{%endif%}

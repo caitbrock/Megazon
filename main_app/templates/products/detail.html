@@ -22,10 +22,11 @@
       {{ product.quant_sell }}
     </p>
     <p>seller:
-      <a href="/profile/{{seller.id}}">{{ product.user }}</a>
+      <a href="/profile/{{seller.id}}">
+        {{ seller.first_name }}</a>
     </p>
     </br>
-{% if user.is_authenticated%}
+    {% if user.is_authenticated%}
 
     <div class="action">
 
@@ -54,8 +55,8 @@
             <i class="small material-icons">add_shopping_cart</i></a>
         </button>
 
-{%else%}<p>Please Login or Register First</p>   
-{% endif %}
+        {%else%}<p>Please Login or Register First</p>
+        {% endif %}
       </div>
     </div>
   </div>

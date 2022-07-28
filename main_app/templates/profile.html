@@ -1,28 +1,65 @@
 {% extends 'base.html' %} {% block content %}
 
-<h1>Profile</h1>
-<div class="card">
-  <p>{{ profile.first_name }}</p>
-  <p><img style="width: 100px" src="/{{ profile.img }}" /></p>
-  <p>{{ profile.description }}</p>
-  <p>Followers 500</p>
-  <p>following 2</p>
-  <a href="{% url 'profile_update' profile.id %}">Edit Profile</a>
-</div>
-<h1>My Products</h1>
-{% for product in products %}
-<div class="card">
-  <a href="{% url 'detail' product.id %}">
-    <div class="card-content">
-      <span class="card-title">{{ product.name }}</span>
-      <p>description: {{ product.description }}</p>
-      <p>price: {{ product.price }}</p>
+<h3>Profile</h3>
+<div class="card" id="profile-card">
+  <div class="profile-content">
+    <img style="width: 200px" src="/{{ profile.img }}" /></p>
+    <h5>
+      {{ profile.first_name }}
+      {{ profile.last_name }}
+    </h5>
+    {{ profile.description }}</br></br>
+    <div class='status'>
+      <div class='followers'>Followers: 500</div>
+      <div class='following'>Following: 2</div>
     </div>
-  </a>
+  </div>
+  <div class="profile-button">
+    <button class="waves-effect waves-light btn" type="edit"><a href="{% url 'profile_update' profile.id %}" style="color:#ffffff;">
+        <i class="small material-icons">edit</i></a>
+    </button>
+  </div>
+</div>
+
+
+
+
+<h3>My Products</h3>
+<div class="row">
+  {% for product in products %}
+  <div id="Container" class="project-cards-container">
+    <div class="col s4 m4 l4 mix category-{{product.category_type}}" data-price="{{product.price}" data-name="{{product.name}">
+        <div class="card">
+      <div class="card-content">
+        <a href="{% url 'detail' product.id %}">
+          <img style="height: 400px" src="/{{ product.img }}" class="lazyload responsive-img" ondragstart="return false;">
+      <span class="card-title">
+        {{ product.name }}</span>
+      <p>
+        {{ product.description }}
+      </p>
+      <p>price:
+        {{ product.price }}
+      </p>
+
+      </br>
+      <button class="waves-effect waves-light btn" type="Add to Cart">
+        <i class="small material-icons">add_shopping_cart</i>
+      </button>
+    </div>
+  </div>
 </div>
 {% endfor %}
+</div>
+
+
 <li>
   <a href="{% url 'products_create' %}"><button>Add Product</button></a>
 </li>
-<h1>Collections</h1>
+
+
+
+<h3>Collections</h3>
+
+
 {% endblock %}

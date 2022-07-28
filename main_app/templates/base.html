@@ -26,11 +26,12 @@
         </ul>
         <ul class="right">
           {% if user.is_authenticated %}
-          <li><a href="{% url 'logout' %}">Logout</a></li>
+
           <li><a href="/">Home</a></li>
           <li><a href="/about/">About</a></li>
           <li><a href="/cart/">Cart</a></li>
           <li><a href="/profile/">Profile</a></li>
+          <li><a href="{% url 'logout' %}">Logout</a></li>
           {% else %}
           <li><a href="/">Home</a></li>
           <li><a href="/about/">About</a></li>
@@ -80,8 +81,6 @@
     });
   });
 
-
-
   // DROPDOWN SELECT
   $(function() {
     var $filterSelect = $('#FilterSelect'),
@@ -94,8 +93,6 @@
       $container.mixItUp('filter', this.value);
     });
   });
-
-  
 </script>
 
 </html>

@@ -24,38 +24,47 @@
 
 
 
-<h3>My Products</h3>
-<div class="row">
-  {% for product in products %}
-  <div id="Container" class="project-cards-container">
-    <div class="col s4 m4 l4 mix category-{{product.category_type}}" data-price="{{product.price}" data-name="{{product.name}">
-        <div class="card">
-      <div class="card-content">
-        <a href="{% url 'detail' product.id %}">
-          <img style="height: 400px" src="/{{ product.img }}" class="lazyload responsive-img" ondragstart="return false;">
-      <span class="card-title">
-        {{ product.name }}</span>
-      <p>
-        {{ product.description }}
-      </p>
-      <p>price:
-        {{ product.price }}
-      </p>
+<h4>My Products</h4>
+<div class="card" id="profile-card">
 
-      </br>
-      <button class="waves-effect waves-light btn" type="Add to Cart">
-        <i class="small material-icons">add_shopping_cart</i>
-      </button>
+  <div class="row">
+    {% for product in products %}
+    <div class="gallery col s3 m3 l3">
+      <div class="card">
+        <div class="card-content">
+          <a href="{% url 'detail' product.id %}">
+            <img style="height: 200px" src="/{{ product.img }}">
+            <span class="card-title">
+              {{ product.name }}</span>
+            <p>
+              {{ product.description }}
+            </p>
+        </div>
+        <div class="product-buttons">
+          <button class="waves-effect waves-light btn" type="edit"><a href="{% url 'products_update' product.id %}" style="color:#ffffff;">
+              <i class="small material-icons">edit</i></a>
+          </button>
+
+          <form action="{% url 'products_delete' product.id %}" method="POST">
+            {%csrf_token%} <button class="waves-effect waves-light btn" type="submit"><a href="{% url 'products_delete' product.id %}" style="color:#ffffff;">
+                <i class="small material-icons">delete</i></a>
+            </button>
+          </form>
+
+
+        </div>
+      </div>
     </div>
+    {% endfor %}
   </div>
-</div>
-{% endfor %}
-</div>
 
+  <div class="profile-button">
+    <button class="waves-effect waves-light btn" type="edit"><a href="{% url 'products_create' %}" style="color:#ffffff;">
+        <i class="small material-icons">add</i></a>
+    </button>
+  </div>
 
-<li>
-  <a href="{% url 'products_create' %}"><button>Add Product</button></a>
-</li>
+</div>
 
 
 

@@ -21,6 +21,14 @@ h5 {
   margin: 0px;
 }
 
+h4 {
+  padding: 20px;
+}
+
+h5 {
+  font-size: 30px;
+}
+
 h6 {
   font-size: 12px;
   margin: 0;
@@ -29,6 +37,10 @@ h6 {
 footer.page-footer {
   padding-top: 0;
   text-align: right;
+}
+
+.page-footer {
+  background-color: rgb(37, 37, 37);
 }
 
 .container {
@@ -40,11 +52,7 @@ footer.page-footer {
 nav {
   background-color: rgb(37, 37, 37);
 }
-  
-.page-footer {
-  background-color: rgb(37, 37, 37);
-}
-
+/* Home Page */
 .hero-image {
   background-image: url("https://idsb.tmgrup.com.tr/ly/uploads/images/2022/02/04/180030.jpg");
   background-repeat: no-repeat;
@@ -231,6 +239,20 @@ span {
   flex-direction: row;
   column-gap: 20px;
   color: #26a69a;
+}
 
+.gallery{
+  max-height: 20%;
+}
 
+#products-card{
+  display: flex;
+  flex-direction: row;
+  max-width: 100vw;
+  padding: 20px;
+  justify-content: space-between;
+}
+
+.product-form{
+  padding: 20px;
 }

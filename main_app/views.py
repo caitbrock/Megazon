@@ -1,6 +1,3 @@
-
-from asyncio.windows_events import NULL
-from itertools import product
 from django.shortcuts import redirect, render
 from .models import Product, Profile, Order
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -29,7 +26,6 @@ def home(request):
 def products_detail(request,product_id):
   product = Product.objects.get(id=product_id)
   currentUser = request.user
-  print(product.user)
   return render (request, 'products/detail.html', {
     'product': product,
     'currentUser':currentUser

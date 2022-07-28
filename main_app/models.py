@@ -27,7 +27,7 @@ class Product(models.Model):
     description = models.CharField(max_length=250)
     price = models.IntegerField()
     category_type = models.CharField(max_length=1, choices=CATEGORY_TYPE, default=CATEGORY_TYPE[0][0])
-    img = models.ImageField(upload_to='images')
+    image = models.ImageField(upload_to='images')
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     quant_sell = models.IntegerField()
     def __str__(self):

@@ -1,6 +1,3 @@
-from django.http import HttpResponseRedirect
-from itertools import product
-from urllib import request
 from django.shortcuts import redirect, render
 from .models import Product, Profile, Order
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -29,7 +26,6 @@ def home(request):
 def products_detail(request,product_id):
   product = Product.objects.get(id=product_id)
   currentUser = request.user
-  print(product.user)
   return render (request, 'products/detail.html', {
     'product': product,
     'currentUser':currentUser
@@ -52,7 +48,8 @@ def register(request):
    return redirect(reverse("profile_create"))
 
 def cart(request):
-    return render(request, 'cart.html')
+    currentUser = request.user
+    return render(request, 'cart.html',{'currentUser':currentUser})
 
 def profile(request,profile_id):
     try:
@@ -67,10 +64,14 @@ def profile(request,profile_id):
         orders=Order.objects.filter(user=profile.user)
         return render(request, 'profile.html',{'products': products,'profile':profile,'collections':orders})
 
+
+
+
 class ProductCreate(CreateView):
 
     model = Product
-    fields = ['name', 'description', 'price','category_type','img','quant_sell']
+    
+    fields = ['name', 'description', 'price','category_type','image','quant_sell']
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
@@ -80,24 +81,27 @@ class ProductCreate(CreateView):
         return f'/profile/{id}'
 
 class OrderUpdate(UpdateView):
+
     model = Order
     fields = ['available', 'trading_price']
+
+    def get_success_url(self):
+        id = self.request.user.profile.id
+        return f'/profile/{id}'
+
+
+class ProductUpdate(UpdateView):
+    model = Product
+    fields = ['name', 'description', 'price','image']
     
     def get_success_url(self):
         id = self.request.user.profile.id
         return f'/profile/{id}'
 
-class ProductUpdate(UpdateView):
-    model = Product
-    fields = ['name', 'description', 'price']
     
-    def get_success_url(self):  
-        id = self.request.user.profile.id
-        return f'/profile/{id}'
 
 class ProductDelete(DeleteView):
     model = Product
-    
     def get_success_url(self):
         id = self.request.user.profile.id
         return f'/profile/{id}'
@@ -114,16 +118,15 @@ class ProfileCreate(CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
-    
-    def get_success_url(self):  
+
+    def get_success_url(self):
         id = self.request.user.profile.id
         return f'/profile/{id}'
 
 class ProfileUpdate(UpdateView):
     model = Profile
-    fields = ['first_name', 'last_name', 'email','description','img']
-    
-    def get_success_url(self):  
+    fields = ['first_name', 'last_name', 'email','description','image']
+    def get_success_url(self):
         id = self.request.user.profile.id
         return f'/profile/{id}'
 
@@ -137,6 +140,7 @@ def checkout(request):
             user=request.user
         )
         Order.save(order)
+    cart_clear(request)
     return redirect("home")
 
 

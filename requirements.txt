@@ -7,3 +7,4 @@ django-heroku==0.3.1
 django-material==1.10.0
 django-shopping-cart==0.1
 django-filter==22.1
+Pillow==9.2.0

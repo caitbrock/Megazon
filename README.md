@@ -4,9 +4,10 @@ Metazon is an ecommerce application that sells digital products. It is essential
 
 The app allows a user to login to the website and access their profile where their list of products for sale are shown. The profile page includes seller information as well as the collection of items they have purchased previously. The home page of the app illustrates a wide array of products, which are filterable by category type. By clicking a product, users will see more detailed information and can add the product to their cart. When a user is ready to make a purchase, they can click the c
 
-GETTING STARTED:
+###GETTING STARTED:
 
-Take a look at: [Metazon](https://metazon.herokuapp.com/)
+- App is uploaded on Heroku, click here to access [Metazon](https://metazon.herokuapp.com/)
+- Click here to access [Trello Board](https://trello.com/b/eTO21UiG/sei-project-3)
 
 ### Feature 
 
@@ -27,5 +28,8 @@ Take a look at: [Metazon](https://metazon.herokuapp.com/)
 - JS
 - Django
 - Python3
+
+### Screen Shots is down below 
+
 
 

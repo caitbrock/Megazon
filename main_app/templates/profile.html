@@ -25,50 +25,52 @@
 
 
 <h4>My Products</h4>
-<div class="card" id="profile-card">
 
-  <div class="row">
-    {% for product in products %}
-    <div class="gallery col s3 m3 l3">
-      <div class="card">
-        <div class="card-content">
-          <a href="{% url 'detail' product.id %}">
-            <img style="height: 200px" src="/{{ product.img }}">
-            <span class="card-title">
-              {{ product.name }}</span>
-            <p>
-              {{ product.description }}
-            </p>
-        </div>
-        <div class="product-buttons">
+<div class="card" id="profile-card">
+  {% for product in products %}
+  <div class="gallery col s3 m3 l3">
+    <div class="card">
+      <div class="card-content">
+        <a href="{% url 'detail' product.id %}">
+          <img style="height: 200px" src="/{{ product.img }}">
+          <span class="card-title">
+            {{ product.name }}</span>
+          <p>
+            {{ product.description }}
+          </p>
+      </div>
+
+      <div class="product-buttons">
+        <div class="button-edit">
           <button class="waves-effect waves-light btn" type="edit"><a href="{% url 'products_update' product.id %}" style="color:#ffffff;">
               <i class="small material-icons">edit</i></a>
           </button>
+        </div>
 
+        <div class="button-delete">
           <form action="{% url 'products_delete' product.id %}" method="POST">
             {%csrf_token%} <button class="waves-effect waves-light btn" type="submit"><a href="{% url 'products_delete' product.id %}" style="color:#ffffff;">
                 <i class="small material-icons">delete</i></a>
             </button>
           </form>
-
-
         </div>
       </div>
-    </div>
-    {% endfor %}
-  </div>
 
+    </div>
+  </div>
+  {% endfor %}
   <div class="profile-button">
     <button class="waves-effect waves-light btn" type="edit"><a href="{% url 'products_create' %}" style="color:#ffffff;">
         <i class="small material-icons">add</i></a>
     </button>
   </div>
-
 </div>
 
 
 
-<h3>Collections</h3>
-
+<h4>Collections</h4>
+<div class="card" id="profile-card">
+  <!-- code for order output -->
+</div>
 
 {% endblock %}

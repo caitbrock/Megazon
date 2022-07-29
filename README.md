@@ -4,8 +4,6 @@
 ### Project Description 
 Metazon is an ecommerce application that sells digital products. It is essentially Amazon for the Metaverse. 
 
-This app allows a user sell digital products via a profile page they are able to setup by registering and logging into the applciation. to login to the website, access a profile page they can set up where a list of products they for sale are shown. The profile page includes seller information as well as the collection of items they have purchased previously. The home page of the app illustrates a wide array of products, which are filterable by category type. By clicking a product, users will see more detailed information and can add the product to their cart. When a user is ready to make a purchase, they can click the c
-
 This is app is designed for the future because people will have most of the activity on the internet and that is where to servie our costumers. The app allows a user to login to the website and access their profile where their list of products for sale are shown. The profile page includes seller information as well as the collection of items they have purchased previously. The home page of the app illustrates a wide array of products, which are filterable by category type. By clicking a product, users will see more detailed information and can add the product to their cart. When a user is ready to make a purchase, they can click the button to add to cart and it will go to customer's collection, so they can see what they have purchased.
 
 ### GETTING STARTED:
@@ -34,7 +32,6 @@ This is app is designed for the future because people will have most of the acti
 - HTML
 - CSS
 - JS
-- Django
 - Python3
 
 ### Screen Shots is down below 

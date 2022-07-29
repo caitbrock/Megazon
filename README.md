@@ -7,50 +7,47 @@
   <ol>
     <li><a href="#project-description">Project Description</a></li>
     <li><a href="#getting-started">Getting Started</a></li>
-    <li><a href="#feature">Feature</a></li>
-    <li><a href="#technologies-use">Technologies Use</a></li>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#technologies-used">Technologies Used</a></li>
     <li><a href="#screen-shots">Screen Shots</a></li>
     <li><a href="#Usage">Usage</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
 
-
 ### About Our Project:
 Metazon is an ecommerce application that sells digital products. It is essentially Amazon for the Metaverse. 
+This app is designed for a not too distant future where digital spaces and virtual environmments are part of our everyday lives. This app will provide customers a location to purchase their digital necessities and allow artists and creatives to sell their goods and services.
 
 <img width="1376" alt="Screen Shot 2022-07-28 at 9 46 25 PM" src="https://user-images.githubusercontent.com/106497653/181668541-96fba2f1-a958-421c-acc6-bf3dfc290915.png">
 
-- This app is designed for the future because people will have most of the activity on the internet, and that is where to serve our customers. 
-- The app allows users to log in to the website and access their profile, where their list of products for sale is shown. 
+- The app allows users to log in to the website and access their profile, where a list of their products for sale are shown. 
 - The profile page includes seller information and the collection of items they have purchased previously. 
 - The app's home page illustrates a wide array of products, which are filterable by category type. 
-- Clicking a product, users will see more detailed information and can add the product to their cart. When a user is ready to make a purchase, they can click the button to add to the cart, and it will go to the customer's collection, so they can see what they have purchased.
+- Clicking a product, users will see a more detailed page that provides further information. Users can add a product to their cart either from the home page or the detail page. When a user is ready to make a purchase, they can view their cart and hit checkout. Products will then be added to the users collection on their profile page.
 
 <p align="right"><a href="#top">back to top</a></p>
 
 ### Getting Started:
 
-- App is uploaded on Heroku, so you can run the app by clicking [Metazon](https://metazon.herokuapp.com/) to access 
+- The app has been uploaded to Heroku, and is accessible by clicking [Metazon](https://metazon.herokuapp.com/)
 - Click here to access our [Trello Board](https://trello.com/b/eTO21UiG/sei-project-3)
 
 <p align="right"><a href="#top">back to top</a></p>
 
-### Feature: 
+### Features: 
 
-- Able to register the Profile and able to Login Logout
-- Everyone can have their own profile and collections
-- Post the New Product
-- High-quality images
-- Enticing product descriptions
-- Naviagtion bar (Menus that are simple to use and allow customers to browse product categories)
-- Product Filtering (Add product filters to make it easier for customers to find what they’re looking for)
+- Register a profile and with login and logout functionality
+- Personalized profile with a list of products being sold and collection (previously purchased items)
+- Post a new product, as well as edit and delete existing products
+- Naviagtion bar (menus that are simple to use and allow customers to browse product categories)
+- Product filtering (Add product filters to make it easier for customers to find what they’re looking for)
 - Cart Function
 
 
 <p align="right"><a href="#top">back to top</a></p>
 
-### Technologies Use:
+### Technologies Used:
 
 - Django
 - PSQL
@@ -89,8 +86,17 @@ Metazon is an ecommerce application that sells digital products. It is essential
 ### Usage:
 
 In this porject, we used the package for our cart from the online source.
-
 For more examples, please refer to the [Documentation](https://pypi.org/project/django-shopping-cart/)
+
+### Next Steps: 
+
+Moving forward, a few items to further implement would be:
+
+1. Implement payment at checkout functionality
+2. Adding a reviews component to a product
+3. Applying additional filter features to the home page
+4. Adding a follow feature on a users profile so shoppers can follow their favourite accounts
+
 
 ### Contact: 
 

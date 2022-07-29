@@ -26,7 +26,7 @@
         {{ seller.first_name }}</a>
     </p>
     </br>
-    {% if user.is_authenticated%}
+    <!-- {% if user.is_authenticated%}
 
     <div class="action">
 
@@ -48,20 +48,20 @@
         </div>
         </br>
         </br>
-      </div>
+      </div> -->
 
-      <div class="button">
-        <button class="waves-effect waves-light btn" type="Add to Cart"><a href="{% url 'cart_add' product.id %}" style="color:#ffffff;">
-            <i class="small material-icons">add_shopping_cart</i></a>
-        </button>
+    <div class="button">
+      <button class="waves-effect waves-light btn" type="Add to Cart"><a href="{% url 'cart_add' product.id %}" style="color:#ffffff;">
+          <i class="small material-icons">add_shopping_cart</i></a>
+      </button>
 
-        {%else%}<p>Please Login or Register First</p>
-        {% endif %}
-      </div>
+      {%else%}<p>Please Login or Register First</p>
+      {% endif %}
     </div>
   </div>
-  </br>
-  </br>
+</div>
+</br>
+</br>
 
 
-  {% endblock %}
+{% endblock %}

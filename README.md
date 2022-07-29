@@ -98,7 +98,7 @@ Check all member Github and Linkedin
 - Roccay | [Github](https://github.com/Roccay)   [Linkedin](https://www.linkedin.com/in/roccayzhou/)
 - Cait | [Github](https://github.com/caitbrock)   [Linkedin](https://www.linkedin.com/in/caitbrock/)
 - Elivin | [Github](https://github.com/elvinhatamov)   [Linkedin](https://www.linkedin.com/in/elvinhatam/)
-- Lud | [Github](https://github.com/ludlin886)   [Linkedin](linkedin.com/in/lud-lin)
+- Lud | [Github](https://github.com/ludlin886)   [Linkedin](linkedin.com/in/lud-lin-66b527210)
 
 
 <p align="right"><a href="#top">back to top</a></p>

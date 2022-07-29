@@ -11,9 +11,11 @@
     {{ profile.description }}</br></br>
   </div>
   <div class="profile-button">
+    {% if user.is_authenticated%} {% if currentUser.user == profile.user%}
     <button class="waves-effect waves-light btn" type="edit"><a href="{% url 'profile_update' profile.id %}" style="color:#ffffff;">
         <i class="small material-icons">edit</i></a>
     </button>
+    {% endif %} {% endif %}
   </div>
 </div>
 
@@ -87,6 +89,11 @@
     </div>
   </div>
   {% endfor %}
-</div>
 
-{% endblock %}
+  <div class="profile-button">
+    <button class="waves-effect waves-light btn" style="background-color: white; box-shadow: none;" type="edit"><a href=""></a>
+    </button>
+
+  </div>
+
+  {% endblock %}

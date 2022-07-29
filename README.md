@@ -1,12 +1,26 @@
+<div id="top"></div>
+
 ### [Metazon](https://metazon.herokuapp.com/)
 
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li><a href="#project-description">Project Description</a></li>
+    <li><a href="#getting-started">Getting Started</a></li>
+    <li><a href="#feature">Feature</a></li>
+    <li><a href="#technologies-use">Technologies Use</a></li>
+    <li><a href="#screen-shots">Screen Shots</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ol>
+</details>
 
-### Project Description 
+
+### Project Description:
 Metazon is an ecommerce application that sells digital products. It is essentially Amazon for the Metaverse. 
 
 This is app is designed for the future because people will have most of the activity on the internet and that is where to servie our costumers. The app allows a user to login to the website and access their profile where their list of products for sale are shown. The profile page includes seller information as well as the collection of items they have purchased previously. The home page of the app illustrates a wide array of products, which are filterable by category type. By clicking a product, users will see more detailed information and can add the product to their cart. When a user is ready to make a purchase, they can click the button to add to cart and it will go to customer's collection, so they can see what they have purchased.
 
-### GETTING STARTED:
+### Getting Started:
 
 - App is uploaded on Heroku, so you can run the app by clicking [Metazon](https://metazon.herokuapp.com/) to access 
 - Click here to access [Trello Board](https://trello.com/b/eTO21UiG/sei-project-3)
@@ -38,8 +52,12 @@ This is app is designed for the future because people will have most of the acti
 
 
 
-### Group member 
+### Contact 
 
-[Roccay](https://github.com/Roccay) / [Cait](https://github.com/caitbrock) / [Elvin](https://github.com/elvinhatamov) / [Lud](https://github.com/ludlin886) 
+Check all member Github and Linkedin
+Roccay - [Github](https://github.com/Roccay) / [Linkedin](https://www.linkedin.com/in/roccayzhou/)
+Cait - [Github](https://github.com/caitbrock) / [Linkedin](https://www.linkedin.com/in/caitbrock/)
+Elivin - [Github](https://github.com/elvinhatamov) / [Linkedin](https://www.linkedin.com/in/elvinhatam/)
+Lud - [Github](https://github.com/ludlin886) / [Linkedin](linkedin.com/in/lud-lin-66b527210)
 
 

@@ -17,13 +17,18 @@
 
 ### Project Description:
 Metazon is an ecommerce application that sells digital products. It is essentially Amazon for the Metaverse. 
+<img width="1376" alt="Screen Shot 2022-07-28 at 9 46 25 PM" src="https://user-images.githubusercontent.com/106497653/181668541-96fba2f1-a958-421c-acc6-bf3dfc290915.png">
 
 This is app is designed for the future because people will have most of the activity on the internet and that is where to servie our costumers. The app allows a user to login to the website and access their profile where their list of products for sale are shown. The profile page includes seller information as well as the collection of items they have purchased previously. The home page of the app illustrates a wide array of products, which are filterable by category type. By clicking a product, users will see more detailed information and can add the product to their cart. When a user is ready to make a purchase, they can click the button to add to cart and it will go to customer's collection, so they can see what they have purchased.
+
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 ### Getting Started:
 
 - App is uploaded on Heroku, so you can run the app by clicking [Metazon](https://metazon.herokuapp.com/) to access 
-- Click here to access [Trello Board](https://trello.com/b/eTO21UiG/sei-project-3)
+- Click here to access our [Trello Board](https://trello.com/b/eTO21UiG/sei-project-3)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 ### Feature 
 
@@ -37,6 +42,7 @@ This is app is designed for the future because people will have most of the acti
 - Cart Function
 
 
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 ### Technologies Use:
 
@@ -48,16 +54,25 @@ This is app is designed for the future because people will have most of the acti
 - JS
 - Python3
 
+<p align="right">(<a href="#top">back to top</a>)</p>
+
 ### Screen Shots is down below 
+<img width="1376" alt="Screen Shot 2022-07-28 at 9 46 25 PM" src="https://user-images.githubusercontent.com/106497653/181668147-ab675909-ef52-40f6-bf70-df611d0f8e5a.png">![Screen Shot 2022-07-28 at 9 47 08 PM](https://user-images.githubusercontent.com/106497653/181668153-801b9b4a-a466-4ae9-a277-bda295259df2.png)
+![Screen Shot 2022-07-28 at 9 47 29 PM](https://user-images.githubusercontent.com/106497653/181668154-9408cff4-fa15-48ac-b690-8794033b5bbf.png)
+![Screen Shot 2022-07-28 at 9 48 11 PM](https://user-images.githubusercontent.com/106497653/181668155-4c485654-08e0-45c6-88c9-ac5e6c47bb0b.png)
+![Screen Shot 2022-07-28 at 9 50 16 PM](https://user-images.githubusercontent.com/106497653/181668156-7c855839-a8f9-463f-89fd-7b36c5895baa.png)
+![Screen Shot 2022-07-28 at 9 50 55 PM](https://user-images.githubusercontent.com/106497653/181668158-780635ec-5497-450e-a25e-cb4b65eb65a0.png)
 
 
+
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 ### Contact 
 
 Check all member Github and Linkedin
-Roccay - [Github](https://github.com/Roccay) / [Linkedin](https://www.linkedin.com/in/roccayzhou/)
-Cait - [Github](https://github.com/caitbrock) / [Linkedin](https://www.linkedin.com/in/caitbrock/)
-Elivin - [Github](https://github.com/elvinhatamov) / [Linkedin](https://www.linkedin.com/in/elvinhatam/)
-Lud - [Github](https://github.com/ludlin886) / [Linkedin](linkedin.com/in/lud-lin-66b527210)
+- Roccay | [Github](https://github.com/Roccay)   [Linkedin](https://www.linkedin.com/in/roccayzhou/)
+- Cait | [Github](https://github.com/caitbrock)   [Linkedin](https://www.linkedin.com/in/caitbrock/)
+- Elivin | [Github](https://github.com/elvinhatamov)   [Linkedin](https://www.linkedin.com/in/elvinhatam/)
+- Lud | [Github](https://github.com/ludlin886)   [Linkedin](linkedin.com/in/lud-lin-66b527210)
 
 

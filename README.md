@@ -10,12 +10,13 @@
     <li><a href="#feature">Feature</a></li>
     <li><a href="#technologies-use">Technologies Use</a></li>
     <li><a href="#screen-shots">Screen Shots</a></li>
+    <li><a href="#Usage">Usage</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
 
 
-### Project Description:
+### About Our Project:
 Metazon is an ecommerce application that sells digital products. It is essentially Amazon for the Metaverse. 
 
 <img width="1376" alt="Screen Shot 2022-07-28 at 9 46 25 PM" src="https://user-images.githubusercontent.com/106497653/181668541-96fba2f1-a958-421c-acc6-bf3dfc290915.png">
@@ -35,7 +36,7 @@ Metazon is an ecommerce application that sells digital products. It is essential
 
 <p align="right"><a href="#top">back to top</a></p>
 
-### Feature 
+### Feature: 
 
 - Able to register the Profile and able to Login Logout
 - Everyone can have their own profile and collections
@@ -66,6 +67,12 @@ Metazon is an ecommerce application that sells digital products. It is essential
 <img width="1376" alt="Screen Shot 2022-07-28 at 9 46 25 PM" src="https://user-images.githubusercontent.com/106497653/181668147-ab675909-ef52-40f6-bf70-df611d0f8e5a.png">
 (Home Page - Filter & Product)
 ![Screen Shot 2022-07-28 at 9 47 08 PM](https://user-images.githubusercontent.com/106497653/181668153-801b9b4a-a466-4ae9-a277-bda295259df2.png)
+(Register Page)
+<img width="1391" alt="Screen Shot 2022-07-28 at 10 25 33 PM" src="https://user-images.githubusercontent.com/106497653/181670090-7fc61ae9-bd41-4759-b361-6e960ed72271.png">
+(Login Page)
+<img width="1390" alt="Screen Shot 2022-07-28 at 10 25 17 PM" src="https://user-images.githubusercontent.com/106497653/181670150-5c611ac2-895a-4140-9c72-430c3900470e.png">
+(Reset Password Page)
+<img width="1386" alt="Screen Shot 2022-07-28 at 10 25 48 PM" src="https://user-images.githubusercontent.com/106497653/181670134-56d6877f-28d3-4534-ba80-eb3b36e34ee1.png">
 (Product Detail Page)
 ![Screen Shot 2022-07-28 at 9 47 29 PM](https://user-images.githubusercontent.com/106497653/181668154-9408cff4-fa15-48ac-b690-8794033b5bbf.png)
 (Cart Page)
@@ -79,7 +86,13 @@ Metazon is an ecommerce application that sells digital products. It is essential
 
 <p align="right"><a href="#top">back to top</a></p>
 
-### Contact 
+### Usage:
+
+In this porject, we used the package for our cart from the online source.
+
+For more examples, please refer to the [Documentation](https://pypi.org/project/django-shopping-cart/)
+
+### Contact: 
 
 Check all member Github and Linkedin
 - Roccay | [Github](https://github.com/Roccay)   [Linkedin](https://www.linkedin.com/in/roccayzhou/)

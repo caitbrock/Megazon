@@ -62,7 +62,7 @@ Metazon is an ecommerce application that sells digital products. It is essential
 
 <p align="right"><a href="#top">back to top</a></p>
 
-### Screen Shots is down below 
+### Screen Shots is down below:
 (Home Page)
 <img width="1376" alt="Screen Shot 2022-07-28 at 9 46 25 PM" src="https://user-images.githubusercontent.com/106497653/181668147-ab675909-ef52-40f6-bf70-df611d0f8e5a.png">
 (Home Page - Filter & Product)

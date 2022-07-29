@@ -21,11 +21,11 @@ Metazon is an ecommerce application that sells digital products. It is essential
 
 <img width="1376" alt="Screen Shot 2022-07-28 at 9 46 25 PM" src="https://user-images.githubusercontent.com/106497653/181668541-96fba2f1-a958-421c-acc6-bf3dfc290915.png">
 
-- This is app is designed for the future because people will have most of the activity on the internet and that is where to servie our costumers. 
-- The app allows a user to login to the website and access their profile where their list of products for sale are shown. 
-- The profile page includes seller information as well as the collection of items they have purchased previously. 
-- The home page of the app illustrates a wide array of products, which are filterable by category type. 
-- Clicking a product, users will see more detailed information and can add the product to their cart. When a user is ready to make a purchase, they can click the button to add to cart and it will go to customer's collection, so they can see what they have purchased.
+- This app is designed for the future because people will have most of the activity on the internet, and that is where to serve our customers. 
+- The app allows users to log in to the website and access their profile, where their list of products for sale is shown. 
+- The profile page includes seller information and the collection of items they have purchased previously. 
+- The app's home page illustrates a wide array of products, which are filterable by category type. 
+- Clicking a product, users will see more detailed information and can add the product to their cart. When a user is ready to make a purchase, they can click the button to add to the cart, and it will go to the customer's collection, so they can see what they have purchased.
 
 <p align="right"><a href="#top">back to top</a></p>
 
